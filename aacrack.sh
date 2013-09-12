@@ -92,13 +92,13 @@ RCcheck="NEVER"
 
 
 
-#Installing Mega Api
+#Checking for Mega API
 FILE=/usr/bin/mega.py
 if [ -f $FILE ];
 then
-   echo "Mega API is Installed"
+   echo "Found Mega API!"
 else
-   echo "Mega API Will Be Installed"
+   echo "Mega API not found, it will be installed!"
    
    python python_script.py mega
    import sys
