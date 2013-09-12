@@ -1,9 +1,10 @@
 #!/bin/sh
 #
-# Rasticrac v4.0 alpha 1(SEPT13)
+# Rasticrac v4.0 alpha 1.1EPT13)
 #
 # Modified Edition Of Rasticrac For AppAddict Created By tjglass and DblD
-
+# Orginal Creator: https://twitter.com/iRastignac
+# 
 # ======
 # Please, customize the script first !
 # Choices are:
@@ -18,6 +19,9 @@
 #RClang="DE2"
 #RClang="IT1"
 #RClang="IT2"
+# - This is for Uploading to mega
+megauser=""
+megapass=""
 
 # - Default CrackerName (or "Anonymous").
 RCcracker="Anonymous"
