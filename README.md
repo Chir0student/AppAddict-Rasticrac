@@ -10,3 +10,4 @@ An edited and improved version of iRastignac's cracking script Rasticrac
 Changelog:
 v4.0 Alpha 1		Edition 1 Added Main Code
 v4.0 Alpha 1.1		Added Code
+v4.0 Alpha 1.2		Added Mega Api

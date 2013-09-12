@@ -92,6 +92,21 @@ RCcheck="NEVER"
 
 
 
+#Installing Mega Api
+FILE=/usr/bin/mega.py
+if [ -f $FILE ];
+then
+   echo "Mega API is Installed"
+else
+   echo "Mega API Will Be Installed"
+   
+   python python_script.py mega
+   import sys
+print sys.argv[1]
+fi
+
+
+
 # ======
 function SelectLanguage
 {
