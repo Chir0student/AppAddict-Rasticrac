@@ -14,3 +14,5 @@ Changelog:
 - v4.0 Alpha 1.1 - Added Code
 
 - v4.0 Alpha 1.2 - Added Mega Api
+
+- v4.0 Alpha 1.3 - Added iTunes link locator, and something else?
