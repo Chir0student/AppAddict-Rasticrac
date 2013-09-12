@@ -1,4 +1,6 @@
 AppAddict-Rasticrac
 ===================
 
-Rasticrac with iFilez and AppAddict Upload
+Rasticrac with MEGA.co.nz and AppAddict Upload
+
+Created by tjglass and DblD
