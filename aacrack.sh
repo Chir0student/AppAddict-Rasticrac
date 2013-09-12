@@ -1,21 +1,8 @@
 #!/bin/sh
 #
-# Rasticrac v3.0.2 (SEPT 2013)
+# Rasticrac v4.0 alpha 1(SEPT13)
 #
-# Modified Edition Of AppAddict
-#
-# Rapid Advanced Secure Thorough Intelligent Gaulish Nuclear Acclaimed Cracker
-# Rapide Avance Securise Tout-terrain Intelligent Gaulois Nucleaire Approfondi Craqueur
-#
-#
-# The truth is I never left you. I kept my promise.
-#
-# Je serai là, toujours pour toi, car je resterai ta meilleure amie.
-#
-#
-# Home: https://twitter.com/iRastignac
-# 
-
+# Modified Edition Of Rasticrac For AppAddict Created By tjglass and DblD
 
 # ======
 # Please, customize the script first !
