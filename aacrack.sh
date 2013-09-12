@@ -19,14 +19,15 @@
 #RClang="DE2"
 #RClang="IT1"
 #RClang="IT2"
+
 # - This is for Uploading to mega
 megauser=""
 megapass=""
 
 # - Default CrackerName (or "Anonymous").
 RCcracker="Anonymous"
-# - If you Crack For AppAddict Enter aa (No Caps)
-# - If you Crack For A Other Site (eg;AppDora, iPhone Cake) Enter other (No Caps)
+# - If you Crack For AppAddict Enter "aa" (No Caps, No quotes - don't delete the ones below, don't and new ones)
+# - If you Crack For A Other Site (e.g. iPhoneCake) Enter "other" (No Caps, No quotes - don't delete the ones below, don't and new ones)
 Crcommunity=""
 
 # - Should "extra details" appear in Ipa name (ie: "iPad / 3GS / etc") ? (You can hate them)
@@ -1431,11 +1432,11 @@ if [ ! "$CrackerName" = "Anonymous" ]; then
 fi
 #Extra AppAddict Credits /By tjglass/
 if [ "$Crcommunity" = "aa" ]; then
-	echo "Adding Extra Credits"
+	echo "Adding Extra Credits..."
 	touch -r "$WorkDir/$AppName/_Required/cr.txt" "/var/rasticrac/cracker.txt"
-	echo "Added Extra Credits"
+	echo "Added Extra Credits!"
 else
-	echo "Extra Credits N/A"
+	echo "Extra Credits N/A!"
 fi
 
 # Building .ipa (step 1)
