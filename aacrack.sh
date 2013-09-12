@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Rasticrac v4.0 alpha 1.1EPT13)
+# Rasticrac v4.0 alpha 1.3
 #
 # Modified Edition Of Rasticrac For AppAddict Created By tjglass and DblD
 # Orginal Creator: https://twitter.com/iRastignac
@@ -988,10 +988,10 @@ fi
 
 # Getting iTunes URL for AppAddict Submission
 
-echo"Locating iTunes URL"
+echo "Locating iTunes URL..."
 	iurl=http://itunes.apple.com/app/id$(plutil -key itemId "$AppPath/iTunesMetadata.plist" 2> /dev/null)
-if [ $iurl = "" ]; then
-	echo"ERROR Failed To Find iTunes URL"
+if [ -z $iurl ]; then
+	echo "ERROR! Failed To Find iTunes URL!"
 fi
 
 
