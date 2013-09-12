@@ -1593,10 +1593,12 @@ if [ $NewFields -ne "11" -a $NewFields -ne "7" ]; then
 fi
 rm -f /tmp/diff.txt
 
-# Don't want MetaData ? Keeping a backup
-if [ ! $RCmetadata = "YES" ]; then
-	mv "$WorkDir/iTunesMetadata.plist" "$WorkDir/iTunesMetadata$RCmetadatafilename.plist"
-fi
+# OLD Metadata Code
+#if [ ! $RCmetadata = "YES" ]; then
+#	mv "$WorkDir/iTunesMetadata.plist" "$WorkDir/iTunesMetadata$RCmetadatafilename.plist"
+#fi
+
+#
 
 # Want Extras in filename ?
 if [ $RCextras = "YES" ]; then
@@ -1606,16 +1608,16 @@ fi
 # Building IPA name, adding AppVersion and MinOsVersion, adding CrackerName
 if [ "$CrackerName" = "Anonymous" ]; then
 	CrackedBy=""
-	ZipComment="RC301 ($DayToday) $Patched"
+	ZipComment="Cracked with RC40a2 ($DayToday) $Patched"
 else
 	CrackedBy="-$CrackerName"
-	ZipComment="From $CrackerName with RC301 ($DayToday) $Patched"
+	ZipComment="Cracked By $CrackerName App Cracked with RC40a2 ($DayToday) $Patched"
 fi
 
 # Cutting too long app name
 AppDisplayName=${AppDisplayName:0:200}
 
- IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc301.ipa"
+ IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc40a1.ipa"
 #IPAName="$NewAppDir/$(echo -n "$AppDisplayName" | tr " " ".")-v$AppVer$CrackedBy.ipa"
 
 # If debug-check-only, don't create real Ipa but an empty proof file
@@ -1711,19 +1713,6 @@ rm -rf "$WorkDir"
 # Cracked app is added into the already-cracked apps list
 echo "$tempLoc" >> /var/mobile/.cracked.log
 
-## Cracked app is added into Crackulous' cracked-apps-ready-to-upload list
-## (Function now removed)
-#p="/private/var/root/Documents/IPAStore.plist"
-#if [ -e "$p" ]; then
-#	#If Crackulous is running, we must close it first
-#	Killous=$(ps -e | grep "/Applications/Crackulous" | grep -v "grep" | awk '{print $1}')
-#	if [ "$Killous" ]; then
-#		echo "${Meter99}$MsgWarning: killing Crackulous softly"
-#		kill $Killous
-#		sleep 1
-#	fi
-#	plutil -key "$IPAName" -type int -value "$(plutil -key 'itemId' "$AppPath/iTunesMetadata.plist" 2> /dev/null)" "$p" 2>&1> /dev/null
-#fi
 
 # Displaying finished Ipa details
 ZipSize=$(du -m -s "$IPAName" | cut -f 1)
@@ -1948,10 +1937,10 @@ if [ ! -e /var/mobile/.cracked.log ]; then
 fi
 
 # Don't want MetaData ? It sucks !
-if [ ! $RCmetadata = "YES" ]; then
-	echo "${Meter3}${escYellow}Note:${escReset} MetaData='NO' is not recommended"
-	RCmetadatafilename=".backup"
-fi
+# if [ ! $RCmetadata = "YES" ]; then
+#  	echo "${Meter3}${escYellow}Note:${escReset} MetaData='NO' is not recommended"
+#	RCmetadatafilename=".backup"
+#fi
 
 # Is syslog available ?
 if [ ! -e /usr/sbin/syslogd ]; then
@@ -2315,7 +2304,7 @@ if [ ! $RCinaGUI = "YES" ]; then
 				if [ -e /tmp/lsddisp.tmp ]; then
 					echo
 					clear
-					echo "*** ${escUnder}Rasticrac v3.0.1 menu${escReset} ***"
+					echo "*** ${escUnder}Rasticrac v4.0 Alpha 1 By tjglass and DblD menu${escReset} ***"
 					cat /tmp/lsddisp.tmp
 					rm -f /tmp/lsddisp.tmp
 					echo
@@ -2454,4 +2443,4 @@ rm -f /tmp/lsd.tmp
 # Merci.
 # Hontoni arigato.
 #
-
+# Thanks for using Rasticrac V4
