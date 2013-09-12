@@ -1,0 +1,12 @@
+# Compiled source #
+###################
+*.pyc
+
+# Hidden files #
+###################
+# Build files #
+###################
+build/
+dist/
+.pypirc
+MANIFEST
