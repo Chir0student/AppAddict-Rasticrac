@@ -986,6 +986,15 @@ if [ $RCartistfrommeta = "YES" ]; then
 	fi
 fi
 
+# Getting iTunes URL for AppAddict Submission
+
+echo"Locating iTunes URL"
+	iurl=http://itunes.apple.com/app/id$(plutil -key itemId "$AppPath/iTunesMetadata.plist" 2> /dev/null)
+if [ $iurl = "" ]; then
+	echo"ERROR Failed To Find iTunes URL"
+fi
+
+
 # Show the real human name of the app
 echo "${Meter5}$AppDisplayName"
 
