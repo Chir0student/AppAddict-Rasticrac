@@ -1,10 +1,22 @@
-#!/bin/bash
-
-# Rasticrac v4.0 alpha 2
+#!/bin/sh
 #
-# Modified Edition Of Rasticrac For AppAddict Created By tjglass and DblD
-# Orginal Creator: https://twitter.com/iRastignac
+# Rasticrac v3.0.2 (SEPT 2013)
+#
+# Modified Edition Of AppAddict
+#
+# Rapid Advanced Secure Thorough Intelligent Gaulish Nuclear Acclaimed Cracker
+# Rapide Avance Securise Tout-terrain Intelligent Gaulois Nucleaire Approfondi Craqueur
+#
+#
+# The truth is I never left you. I kept my promise.
+#
+# Je serai là, toujours pour toi, car je resterai ta meilleure amie.
+#
+#
+# Home: https://twitter.com/iRastignac
 # 
+
+
 # ======
 # Please, customize the script first !
 # Choices are:
@@ -23,12 +35,11 @@
 # - User credentials for uploading to MEGA
 megauser=""
 megapass=""
-
 # - Default CrackerName (or "Anonymous").
 RCcracker="Anonymous"
-
 # - If you Crack For AppAddict Enter "aa" (No Caps, No quotes - don't delete the ones below, don't and new ones)
 # - If you Crack For A Other Site (e.g. iPhoneCake) Enter "other" (No Caps, No quotes - don't delete the ones below, don't and new ones)
+
 Crcommunity=""
 
 # - Should "extra details" appear in Ipa name (ie: "iPad / 3GS / etc") ? (You can hate them)
@@ -94,17 +105,13 @@ RCcheck="NEVER"
 
 
 #Checking for Mega API
-MAPI=/usr/bin/mega.py
-if [ -f $MAPI ];
+if [ -e "/usr/bin/mega.py" ];
 then
    echo "Found Mega API!"
 else
    echo "ERROR! Mega API not found!"
 return 1
 fi
-
-
-
 # ======
 function SelectLanguage
 {
@@ -983,7 +990,6 @@ if [ $RCartistfrommeta = "YES" ]; then
 		AppDisplayName="$AppDisplayName [$human]"
 	fi
 fi
-
 # Getting iTunes URL for AppAddict Submission
 
 echo "Locating iTunes URL..."
@@ -991,7 +997,6 @@ echo "Locating iTunes URL..."
 if [ -z $iurl ]; then
 	echo "ERROR! Failed To Find iTunes URL!"
 fi
-
 
 # Show the real human name of the app
 echo "${Meter5}$AppDisplayName"
@@ -1439,17 +1444,13 @@ if [ ! "$CrackerName" = "Anonymous" ]; then
 	if [ $RCverbose = "YES" ]; then
 		echo "${Meter65}Adding Credits"
 	fi
-	if [ "$Crcommunity" = "aa"
+if [ "$Crcommunity" = "aa"]; then
 		echo "Cracked by $CrackerName @AppAddict ($DayToday)" > "$WorkDir/$AppName/$CreditFile" 
-		if [ ! -e "$AppPath/$AppName/$AppExec.crc" ]; then
-			echo "CheckSum=$(echo -n "$CrackerName" | od -A n -t x1 -v | tr -d ' ','\n')" > "$WorkDir/$AppName/$AppExec.crc"
-			touch -r "$AppPath/$AppName/$AppExec" "$WorkDir/$AppName/$AppExec.crc"
-		fi
-	else		
-		echo "Cracked by $CrackerName ($DayToday)" > "$WorkDir/$AppName/$CreditFile" 
-			if [ ! -e "$AppPath/$AppName/$AppExec.crc" ]; then
-				echo "CheckSum=$(echo -n "$CrackerName" | od -A n -t x1 -v | tr -d ' ','\n')" > "$WorkDir/$AppName/$AppExec.crc"
-				touch -r "$AppPath/$AppName/$AppExec" "$WorkDir/$AppName/$AppExec.crc"
+fi
+	echo "Cracked by $CrackerName ($DayToday)" > "$WorkDir/$AppName/$CreditFile" 
+	if [ ! -e "$AppPath/$AppName/$AppExec.crc" ]; then
+		echo "CheckSum=$(echo -n "$CrackerName" | od -A n -t x1 -v | tr -d ' ','\n')" > "$WorkDir/$AppName/$AppExec.crc"
+		touch -r "$AppPath/$AppName/$AppExec" "$WorkDir/$AppName/$AppExec.crc"
 	fi
 fi
 #Extra AppAddict Credits /By tjglass/
@@ -1592,6 +1593,7 @@ fi
 rm -f /tmp/diff.txt
 
 # OLD Metadata Code
+
 #if [ ! $RCmetadata = "YES" ]; then
 #	mv "$WorkDir/iTunesMetadata.plist" "$WorkDir/iTunesMetadata$RCmetadatafilename.plist"
 #fi
@@ -1606,16 +1608,16 @@ fi
 # Building IPA name, adding AppVersion and MinOsVersion, adding CrackerName
 if [ "$CrackerName" = "Anonymous" ]; then
 	CrackedBy=""
-	ZipComment="Cracked with RC40a2 ($DayToday) $Patched"
+	ZipComment="RC301 ($DayToday) $Patched"
 else
 	CrackedBy="-$CrackerName"
-	ZipComment="Cracked By $CrackerName App Cracked with RC40a2 ($DayToday) $Patched"
+	ZipComment="From $CrackerName with RC301 ($DayToday) $Patched"
 fi
 
 # Cutting too long app name
 AppDisplayName=${AppDisplayName:0:200}
 
- IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc40a1.ipa"
+ IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc301.ipa"
 #IPAName="$NewAppDir/$(echo -n "$AppDisplayName" | tr " " ".")-v$AppVer$CrackedBy.ipa"
 
 # If debug-check-only, don't create real Ipa but an empty proof file
@@ -1710,6 +1712,7 @@ rm -rf "$WorkDir"
 
 # Cracked app is added into the already-cracked apps list
 echo "$tempLoc" >> /var/mobile/.cracked.log
+
 
 
 # Displaying finished Ipa details
@@ -1935,10 +1938,10 @@ if [ ! -e /var/mobile/.cracked.log ]; then
 fi
 
 # Don't want MetaData ? It sucks !
-# if [ ! $RCmetadata = "YES" ]; then
-#  	echo "${Meter3}${escYellow}Note:${escReset} MetaData='NO' is not recommended"
-#	RCmetadatafilename=".backup"
-#fi
+if [ ! $RCmetadata = "YES" ]; then
+	echo "${Meter3}${escYellow}Note:${escReset} MetaData='NO' is not recommended"
+	RCmetadatafilename=".backup"
+fi
 
 # Is syslog available ?
 if [ ! -e /usr/sbin/syslogd ]; then
@@ -2302,7 +2305,7 @@ if [ ! $RCinaGUI = "YES" ]; then
 				if [ -e /tmp/lsddisp.tmp ]; then
 					echo
 					clear
-					echo "*** ${escUnder}Rasticrac v4.0 Alpha 1 By tjglass and DblD menu${escReset} ***"
+					echo "*** ${escUnder}Rasticrac v3.0.1 menu${escReset} ***"
 					cat /tmp/lsddisp.tmp
 					rm -f /tmp/lsddisp.tmp
 					echo
@@ -2441,4 +2444,4 @@ rm -f /tmp/lsd.tmp
 # Merci.
 # Hontoni arigato.
 #
-# Thanks for using Rasticrac V4
+
