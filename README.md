@@ -1,11 +1,11 @@
 AppAddict-Rasticrac
 ===================
 
-Rasticrac with MEGA.co.nz and AppAddict Upload
+Rasticrac with MEGA.co.nz upload and AppAddict submission!
 
 Created by tjglass and DblD
 
-An edited and improved version of iRastignac's cracking script Rasticrac
+An edited and improved version of iRastignac's cracking script Rasticrac!
 
 Changelog:
 
