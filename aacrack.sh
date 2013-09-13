@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 # Rasticrac v4.0 alpha 2
 #
 # Modified Edition Of Rasticrac For AppAddict Created By tjglass and DblD
@@ -94,13 +94,13 @@ RCcheck="NEVER"
 
 
 #Checking for Mega API
-FILE=/usr/bin/mega.py
-if [ -f $FILE ];
+MAPI=/usr/bin/mega.py
+if [ -f $MAPI ];
 then
    echo "Found Mega API!"
 else
    echo "ERROR! Mega API not found!"
-exit 1
+return 1
 fi
 
 
