@@ -99,11 +99,8 @@ if [ -f $FILE ];
 then
    echo "Found Mega API!"
 else
-   echo "Mega API not found, it will be installed!"
-   
-   python python_script.py mega
-   import sys
-print sys.argv[1]
+   echo "ERROR! Mega API not found!"
+exit 1
 fi
 
 
