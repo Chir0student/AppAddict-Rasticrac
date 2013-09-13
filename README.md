@@ -18,3 +18,7 @@ Changelog:
 - v4.0 Alpha 1.3 - Added iTunes link locator, and something else?
 
 - v4.0 Alpha 2 - Major Additions (And Removes)
+
+Known bugs:
+
+- MEGA API has syntax errors for some reason... needs to be fixed!
