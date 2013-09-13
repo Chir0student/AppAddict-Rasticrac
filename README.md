@@ -22,3 +22,7 @@ Changelog:
 Known bugs:
 
 - MEGA API has syntax errors for some reason... needs to be fixed!
+
+- Check the aasubmit.php files, they probably aren't good...
+
+- I'm not sure, how are we gonna combine 3 languages lol.
