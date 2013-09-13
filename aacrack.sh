@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Rasticrac v4.0 alpha 1.3
+# Rasticrac v4.0 alpha 2
 #
 # Modified Edition Of Rasticrac For AppAddict Created By tjglass and DblD
 # Orginal Creator: https://twitter.com/iRastignac
