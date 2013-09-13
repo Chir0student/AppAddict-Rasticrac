@@ -1,8 +1,9 @@
 #!/bin/sh
 #
-# Rasticrac v3.0.2 (SEPT 2013)
+# Rasticrac v3.1a3 (SEPT 2013)
 #
-# Modified Edition Of AppAddict
+# Rasticrac with uploader and AA submitter
+# By: tjglass & DblD
 #
 # Rapid Advanced Secure Thorough Intelligent Gaulish Nuclear Acclaimed Cracker
 # Rapide Avance Securise Tout-terrain Intelligent Gaulois Nucleaire Approfondi Craqueur
@@ -13,7 +14,7 @@
 # Je serai là, toujours pour toi, car je resterai ta meilleure amie.
 #
 #
-# Home: https://twitter.com/iRastignac
+# Original creator: https://twitter.com/iRastignac
 # 
 
 
@@ -107,10 +108,12 @@ RCcheck="NEVER"
 #Checking for Mega API
 if [ -e "/usr/bin/mega.py" ];
 then
-   echo "Found Mega API!"
+   echo "Found MEGA API!"
 else
-   echo "ERROR! Mega API not found!"
-return 1
+   echo "MEGA API not found, it will be installed!""
+   python python_script.py mega
+   import sys
+print sys.argv[1]
 fi
 # ======
 function SelectLanguage
@@ -1608,16 +1611,16 @@ fi
 # Building IPA name, adding AppVersion and MinOsVersion, adding CrackerName
 if [ "$CrackerName" = "Anonymous" ]; then
 	CrackedBy=""
-	ZipComment="RC301 ($DayToday) $Patched"
+	ZipComment="RC31a3 ($DayToday) $Patched"
 else
 	CrackedBy="-$CrackerName"
-	ZipComment="From $CrackerName with RC301 ($DayToday) $Patched"
+	ZipComment="From $CrackerName with RC31a3 ($DayToday) $Patched"
 fi
 
 # Cutting too long app name
 AppDisplayName=${AppDisplayName:0:200}
 
- IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc301.ipa"
+ IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc31a3.ipa"
 #IPAName="$NewAppDir/$(echo -n "$AppDisplayName" | tr " " ".")-v$AppVer$CrackedBy.ipa"
 
 # If debug-check-only, don't create real Ipa but an empty proof file
@@ -2444,4 +2447,4 @@ rm -f /tmp/lsd.tmp
 # Merci.
 # Hontoni arigato.
 #
-
+# Thanks for using v3.1a3
