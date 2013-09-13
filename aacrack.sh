@@ -36,11 +36,12 @@
 # - User credentials for uploading to MEGA
 megauser=""
 megapass=""
+
 # - Default CrackerName (or "Anonymous").
 RCcracker="Anonymous"
+
 # - If you Crack For AppAddict Enter "aa" (No Caps, No quotes - don't delete the ones below, don't and new ones)
 # - If you Crack For A Other Site (e.g. iPhoneCake) Enter "other" (No Caps, No quotes - don't delete the ones below, don't and new ones)
-
 Crcommunity=""
 
 # - Should "extra details" appear in Ipa name (ie: "iPad / 3GS / etc") ? (You can hate them)
@@ -993,6 +994,7 @@ if [ $RCartistfrommeta = "YES" ]; then
 		AppDisplayName="$AppDisplayName [$human]"
 	fi
 fi
+
 # Getting iTunes URL for AppAddict Submission
 
 echo "Locating iTunes URL..."
