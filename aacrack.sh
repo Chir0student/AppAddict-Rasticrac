@@ -20,12 +20,13 @@
 #RClang="IT1"
 #RClang="IT2"
 
-# - This is for Uploading to mega
+# - User credentials for uploading to MEGA
 megauser=""
 megapass=""
 
 # - Default CrackerName (or "Anonymous").
 RCcracker="Anonymous"
+
 # - If you Crack For AppAddict Enter "aa" (No Caps, No quotes - don't delete the ones below, don't and new ones)
 # - If you Crack For A Other Site (e.g. iPhoneCake) Enter "other" (No Caps, No quotes - don't delete the ones below, don't and new ones)
 Crcommunity=""
