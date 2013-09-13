@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Rasticrac v4.0 alpha 2
 #
