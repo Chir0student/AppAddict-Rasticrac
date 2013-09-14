@@ -1,9 +1,6 @@
 #!/bin/sh
 #
-# Rasticrac v3.1a3 (SEPT 2013)
-#
-# Rasticrac with uploader and AA submitter
-# By: tjglass & DblD
+# Rasticrac v3.0.1 (july 2013)
 #
 # Rapid Advanced Secure Thorough Intelligent Gaulish Nuclear Acclaimed Cracker
 # Rapide Avance Securise Tout-terrain Intelligent Gaulois Nucleaire Approfondi Craqueur
@@ -14,7 +11,7 @@
 # Je serai là, toujours pour toi, car je resterai ta meilleure amie.
 #
 #
-# Original creator: https://twitter.com/iRastignac
+# Home: https://twitter.com/iRastignac
 # 
 
 
@@ -33,16 +30,8 @@
 #RClang="IT1"
 #RClang="IT2"
 
-# - User credentials for uploading to MEGA
-megauser=""
-megapass=""
-
 # - Default CrackerName (or "Anonymous").
 RCcracker="Anonymous"
-
-# - If you Crack For AppAddict Enter "aa" (No Caps, No quotes - don't delete the ones below, don't and new ones)
-# - If you Crack For A Other Site (e.g. iPhoneCake) Enter "other" (No Caps, No quotes - don't delete the ones below, don't and new ones)
-Crcommunity=""
 
 # - Should "extra details" appear in Ipa name (ie: "iPad / 3GS / etc") ? (You can hate them)
 RCextras="YES"
@@ -105,17 +94,6 @@ RCcheck="NEVER"
 # ======
 
 
-
-#Checking for Mega API
-if [ -e "/usr/bin/mega.py" ];
-then
-   echo "Found MEGA API!"
-else
-   echo "MEGA API not found, it will be installed!""
-   python python_script.py mega
-   import sys
-print sys.argv[1]
-fi
 # ======
 function SelectLanguage
 {
@@ -893,7 +871,6 @@ function CoreFunction
 AppInput=$1
 CrackerName=$2
 CreditFile=$3
-Crcommunity =$4
 
 if [ ! "$CrackerName" ]; then
 	CrackerName="$RCcracker"
@@ -903,9 +880,6 @@ if [ ! "$CreditFile" ]; then
 	CreditFile="$CrackerName"
 fi
 
-if [ ! "$CrCommunity" ]; then
-	Crcommunity="$Crcommunity"
-fi
 # Script has app's full directory path as input (ie: called from GUI)
 if [ -d "$AppInput" ]; then
 	tempLoc=$AppInput
@@ -993,14 +967,6 @@ if [ $RCartistfrommeta = "YES" ]; then
 		UnicodeToHuman
 		AppDisplayName="$AppDisplayName [$human]"
 	fi
-fi
-
-# Getting iTunes URL for AppAddict Submission
-
-echo "Locating iTunes URL..."
-	iurl=http://itunes.apple.com/app/id$(plutil -key itemId "$AppPath/iTunesMetadata.plist" 2> /dev/null)
-if [ -z $iurl ]; then
-	echo "ERROR! Failed To Find iTunes URL!"
 fi
 
 # Show the real human name of the app
@@ -1346,8 +1312,7 @@ else
 					mv "$WorkDir/$AppName/SC_Info/Six$AppExec.sinf" "$WorkDir/$AppName/SC_Info/$AppExec.sinf"
 					mv "$WorkDir/$AppName/SC_Info/Six$AppExec.supp" "$WorkDir/$AppName/SC_Info/$AppExec.supp"
 				fi
-				# Adding extreme cracker locator
-				mv ~/
+
 				# Removing temp files
 				rm "$WorkDir/$AppName/$AppExec"
 				rm "$WorkDir/$AppName/SC_Info/$AppExec.sinf"
@@ -1449,22 +1414,11 @@ if [ ! "$CrackerName" = "Anonymous" ]; then
 	if [ $RCverbose = "YES" ]; then
 		echo "${Meter65}Adding Credits"
 	fi
-if [ "$Crcommunity" = "aa"]; then
-		echo "Cracked by $CrackerName @AppAddict ($DayToday)" > "$WorkDir/$AppName/$CreditFile" 
-fi
-	echo "Cracked by $CrackerName ($DayToday)" > "$WorkDir/$AppName/$CreditFile" 
+	echo "Cracked by $CrackerName ($DayToday)" > "$WorkDir/$AppName/$CreditFile"
 	if [ ! -e "$AppPath/$AppName/$AppExec.crc" ]; then
 		echo "CheckSum=$(echo -n "$CrackerName" | od -A n -t x1 -v | tr -d ' ','\n')" > "$WorkDir/$AppName/$AppExec.crc"
 		touch -r "$AppPath/$AppName/$AppExec" "$WorkDir/$AppName/$AppExec.crc"
 	fi
-fi
-#Extra AppAddict Credits /By tjglass/
-if [ "$Crcommunity" = "aa" ]; then
-	echo "Adding Extra Credits..."
-	touch -r "$WorkDir/$AppName/_Required/cr.txt" "/var/rasticrac/cracker.txt"
-	echo "Added Extra Credits!"
-else
-	echo "Extra Credits N/A!"
 fi
 
 # Building .ipa (step 1)
@@ -1597,13 +1551,10 @@ if [ $NewFields -ne "11" -a $NewFields -ne "7" ]; then
 fi
 rm -f /tmp/diff.txt
 
-# OLD Metadata Code
-
-#if [ ! $RCmetadata = "YES" ]; then
-#	mv "$WorkDir/iTunesMetadata.plist" "$WorkDir/iTunesMetadata$RCmetadatafilename.plist"
-#fi
-
-#
+# Don't want MetaData ? Keeping a backup
+if [ ! $RCmetadata = "YES" ]; then
+	mv "$WorkDir/iTunesMetadata.plist" "$WorkDir/iTunesMetadata$RCmetadatafilename.plist"
+fi
 
 # Want Extras in filename ?
 if [ $RCextras = "YES" ]; then
@@ -1613,16 +1564,16 @@ fi
 # Building IPA name, adding AppVersion and MinOsVersion, adding CrackerName
 if [ "$CrackerName" = "Anonymous" ]; then
 	CrackedBy=""
-	ZipComment="RC31a3 ($DayToday) $Patched"
+	ZipComment="RC301 ($DayToday) $Patched"
 else
 	CrackedBy="-$CrackerName"
-	ZipComment="From $CrackerName with RC31a3 ($DayToday) $Patched"
+	ZipComment="From $CrackerName with RC301 ($DayToday) $Patched"
 fi
 
 # Cutting too long app name
 AppDisplayName=${AppDisplayName:0:200}
 
- IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc31a3.ipa"
+ IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc301.ipa"
 #IPAName="$NewAppDir/$(echo -n "$AppDisplayName" | tr " " ".")-v$AppVer$CrackedBy.ipa"
 
 # If debug-check-only, don't create real Ipa but an empty proof file
@@ -1718,7 +1669,19 @@ rm -rf "$WorkDir"
 # Cracked app is added into the already-cracked apps list
 echo "$tempLoc" >> /var/mobile/.cracked.log
 
-
+## Cracked app is added into Crackulous' cracked-apps-ready-to-upload list
+## (Function now removed)
+#p="/private/var/root/Documents/IPAStore.plist"
+#if [ -e "$p" ]; then
+#	#If Crackulous is running, we must close it first
+#	Killous=$(ps -e | grep "/Applications/Crackulous" | grep -v "grep" | awk '{print $1}')
+#	if [ "$Killous" ]; then
+#		echo "${Meter99}$MsgWarning: killing Crackulous softly"
+#		kill $Killous
+#		sleep 1
+#	fi
+#	plutil -key "$IPAName" -type int -value "$(plutil -key 'itemId' "$AppPath/iTunesMetadata.plist" 2> /dev/null)" "$p" 2>&1> /dev/null
+#fi
 
 # Displaying finished Ipa details
 ZipSize=$(du -m -s "$IPAName" | cut -f 1)
@@ -2449,4 +2412,4 @@ rm -f /tmp/lsd.tmp
 # Merci.
 # Hontoni arigato.
 #
-# Thanks for using v3.1a3
+

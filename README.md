@@ -9,15 +9,9 @@ An edited and improved version of iRastignac's cracking script Rasticrac!
 
 Changelog:
 
-- v4.0 Alpha 1 - Edition 1 Added Main Code
-
-- v4.0 Alpha 1.1 - Added Code
-
-- v4.0 Alpha 1.2 - Added Mega Api
-
-- v4.0 Alpha 1.3 - Added iTunes link locator, and something else?
-
-- v4.0 Alpha 2 - Major Additions (And Removes)
+- v3.1a3
+	- Renamed the version (I think 3.1 is better than 4 :P)
+	- Fixed the cracking script, now it runs
 
 Known bugs:
 
@@ -25,6 +19,8 @@ Known bugs:
 
 - Check the aasubmit.php files, they probably aren't good...
 
-- I'm not sure, how are we gonna combine 3 languages lol.
+- I'm not sure, how are we gonna combine 3 languages lol
 
-- The cracking script won't run...
+- iTunes Locator doesn't work properly
+
+- Some weird debug messages
