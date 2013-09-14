@@ -23,4 +23,4 @@ Known bugs:
 
 - iTunes Locator doesn't work properly
 
-- Some weird debug messages
+- Some weird debug messages (not really debug messages, but it looks stupid)
