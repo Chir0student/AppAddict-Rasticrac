@@ -88,20 +88,24 @@ RCcheck="NEVER"
 # ======
 
 
-#Checking for Mega API
-if [ -e "/usr/bin/mega.py" ];
+#Checking for Mega LOGIN
+if [ -e "~/.megacmd.json" ];
 then
-   echo "Found MEGA API!"
+   echo "Login File Found"
 else
-   echo "ERROR! MEGA API not found!"
-return 1
+   echo "Mega.co.nz Login file not created"
+   echo "Do you want to upload to MEGA? Y/N"
+   read megayn
+   if [$megayn = "y"]
+		echo "Creating Login File"
+		# - Creating File
+		echo "{" > ~/.megacmd.json
+		echo "	""User : "$megauser > ~/.megacmd.json
+		echo "	""Password : "$megapass > ~/.megacmd.json
 fi
 
 # ======
 function SelectLanguage
-{
-# Language US
-if [ $RClang = "US" ]; then
 	MsgAltMeth="Using alternative dumping method"
 	MsgAnaAppl="Analyzing application"
 	MsgAppLoca="Locating"
@@ -1254,9 +1258,9 @@ if [ $RCverbose = "YES" ]; then
 	fi
 fi
 if [ "$CrackerName" = "Anonymous" ]; then
-	CrackedBy="Pear.Pie@apple.com"
+	CrackedBy="AppAddict@apple.com"
 else
-	CrackedBy="$CrackerName@cracked.by"
+	CrackedBy="$CrackerName@AppAddict.by"
 	echo "${Patched}RC$CrackerName" | tr -cd "[:alnum:]" | tr "[A-Z][a-z][1-9]" "[1-9][a-z][A-Z]" > "$WorkDir/Payload/$AppName/_CodeSignature/ResourceRules"
 	touch -r "$AppPath/$AppName/Info.plist" "$WorkDir/Payload/$AppName/_CodeSignature/ResourceRules"
 fi
@@ -1354,17 +1358,16 @@ fi
 # Building IPA name, adding AppVersion and MinOsVersion, adding CrackerName
 if [ "$CrackerName" = "Anonymous" ]; then
 	CrackedBy=""
-	ZipComment="RC31a3 ($DayToday) $Patched"
+	ZipComment="Rasticrac 3.1a3 for AppAddict ($DayToday) $Patched"
 else
 	CrackedBy="-$CrackerName"
-	ZipComment="From $CrackerName with RC31a3 ($DayToday) $Patched"
+	ZipComment="Cracked By $CrackerName with Rasticrac 3.1a3 For AppAddict ($DayToday) $Patched"
 fi
 
 # Cutting too long app name
 AppDisplayName=${AppDisplayName:0:200}
 
- IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc31a3.ipa"
-#IPAName="$NewAppDir/$(echo -n "$AppDisplayName" | tr " " ".")-v$AppVer$CrackedBy.ipa"
+ IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc31a3_AppAddict.ipa"
 
 # If debug-check-only, don't create real Ipa but an empty proof file
 if [ $RCcheck = "YES" ]; then
@@ -1378,10 +1381,6 @@ if [ $RCcheck = "YES" ]; then
 	return 0
 fi
 
-#DEBUG
-#FreeSize=$(df -m "$NewAppDir/" | grep disk | awk '{print $4}')
-#echo "${Meter74}Debug: free size on device    [$FreeSize M$MsgSizUnit]"
-#DEBUG
 
 # Size of first data to compress
 FirstSize=$(du -m -s "$WorkDir" | cut -f 1)
