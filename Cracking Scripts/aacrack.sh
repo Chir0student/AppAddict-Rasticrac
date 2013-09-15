@@ -1,17 +1,11 @@
 #!/bin/sh
 
-# Rasticrac v3.0.1 (july 2013)
+# Rasticrac v3.1a3 (sept 2013)
 #
 # Rapid Advanced Secure Thorough Intelligent Gaulish Nuclear Acclaimed Cracker
-# Rapide Avance Securise Tout-terrain Intelligent Gaulois Nucleaire Approfondi Craqueur
-#
-#
 # The truth is I never left you. I kept my promise.
 #
-# Je serai là, toujours pour toi, car je resterai ta meilleure amie.
-#
-#
-# Home: https://twitter.com/iRastignac
+# Original Creator Home: https://twitter.com/iRastignac
 # 
 
 
@@ -20,17 +14,11 @@
 # Choices are:
 
 # - Default language (US:english, FR:french, ES:spanish, DE:german, IT:italian).
+# - Languages Have Been Removed They Will Be Added At A Later Date
  RClang="US"
-#RClang="FR1"
-#RClang="FR2"
-#RClang="ES1"
-#RClang="ES2"
-#RClang="DE1"
-#RClang="DE2"
-#RClang="IT1"
-#RClang="IT2"
 
 # - User credentials for uploading to MEGA
+# - N/A
 megauser=""
 megapass=""
 # - Default CrackerName (or "Anonymous").
@@ -153,246 +141,6 @@ if [ $RClang = "US" ]; then
 	MsgBrzNoth="nothing"
 	MsgMrkDone="Mark all done                 "
 	MskZroDone="Reset done list               "
-fi
-
-# Language FR1 or FR2
-if [ $RClang = "FR1" -o $RClang = "FR2" ]; then
-	MsgAnaAppl="Analyse d'application"
-	MsgAppLoca="Recherche"
-	MsgBldMenu="Construction du menu..."
-	MsgBrzMode="Mode Berzerk: on craque TOUT"
-	MsgCntFind="Introuvable:"
-	MsgDskFull="Disque plein"
-	MsgInsCydi="Installer avec Cydia"
-	MsgMnuEmpt="vide"
-	MsgRemTemp="Effacement fichiers temporaires"
-	MsgSizUnit="o"
-	MsgUnaLoca="Impossible de trouver"
-	MsgWrgChoi="Mauvais choix"
-	MsgWarning="Attention"
-	MsgWrnMeta="nouveau format d'iTunesMetadata"
-	MsgYouChoi="Votre choix"
-	MsgComBoth="Consolidation des deux sections binaires"
-	MsgSgnAppl="Signature de l'application"
-	MsgCopArtw="Copie de l'Artwork"
-	MsgFakMeta="et fausses MetaData"
-	MsgNotMeta="et pas de MetaData"
-	MsgWasAskd="Voulu"
-	MsgErrrors="Erreurs"
-	MsgBrzNoth="rien"
-	MsgMrkDone="Tout marquer fait             "
-	MskZroDone="Effacer liste fait            "
-fi
-# Language FR1 (ascii)
-if [ $RClang = "FR1" ]; then
-	MsgAltMeth="$( echo -ne "M\0351thode alternative de dumping" )"
-	MsgBadChoi="$( echo -ne "Choix erron\0351" )"
-	MsgCopExec="$( echo -ne "& copie de l'ex\0351cutable" )"
-	MsgCreDire="$( echo -ne "Cr\0351ation r\0351pertoires" )"
-	MsgDmpUncr="$( echo -ne "Extraction des donn\0351es d\0351crypt\0351es de l'appli" )"
-	MsgIpaInco="$( echo -ne "Ipa incompl\0350te" )"
-	MsgEraMemo="$( echo -ne "Effacement fichier m\0351moire" )"
-	MsgIpaDone="$( echo -ne "R\0351sultat:" )"
-	MsgMarDone="$( echo -ne "Toutes les apps sont marqu\0351es comme trait\0351es" )"
-	MsgPatCryp="$( echo -ne "Localisation et \0351crasement du CryptID" )"
-	MsgRepData="$( echo -ne "et remplacement par d\0351crypt\0351es" )"
-	MsgVrfDump="$( echo -ne "V\0351rif donn\0351es" )"
-	MsgZipStep="$( echo -ne "Compression de l'ipa (\0351tape" )"
-	MsgFoundIt="$( echo -ne "Trouv\0351" )"
-fi
-# Language FR2 (utf8)
-if [ $RClang = "FR2" ]; then
-	MsgAltMeth="$( echo -ne "M\0303\0251thode alternative de dumping" )"
-	MsgBadChoi="$( echo -ne "Choix erron\0303\0251" )"
-	MsgCopExec="$( echo -ne "& copie de l'ex\0303\0251cutable" )"
-	MsgCreDire="$( echo -ne "Cr\0303\0251ation r\0303\0251pertoires" )"
-	MsgDmpUncr="$( echo -ne "Extraction des donn\0303\0251es d\0303\0251crypt\0303\0251es de l'appli" )"
-	MsgIpaInco="$( echo -ne "Ipa incompl\0303\0250te" )"
-	MsgEraMemo="$( echo -ne "Effacement fichier m\0303\0251moire" )"
-	MsgIpaDone="$( echo -ne "R\0303\0251sultat:" )"
-	MsgMarDone="$( echo -ne "Toutes les apps sont marqu\0303\0251es comme trait\0303\0251es" )"
-	MsgPatCryp="$( echo -ne "Localisation et \0303\0251crasement du CryptID" )"
-	MsgRepData="$( echo -ne "et remplacement par d\0303\0251crypt\0303\0251es" )"
-	MsgVrfDump="$( echo -ne "V\0303\0251rif donn\0303\0251es" )"
-	MsgZipStep="$( echo -ne "Compression de l'ipa (\0303\0251tape" )"
-	MsgFoundIt="$( echo -ne "Trouv\0303\0251" )"
-fi
-
-
-# Language ES1 or ES2
-if [ $RClang = "ES1" -o $RClang = "ES2" ]; then
-	MsgBrzMode="Modo Berzerk: crackando TODO"
-	MsgCntFind="No encontro"
-	MsgCopExec="y copiando ejecutable"
-	MsgCreDire="Creando directorios"
-	MsgEraMemo="Borrado memoria archivo"
-	MsgInsCydi="Instalarlo desde Cydia"
-	MsgIpaDone="Done as"
-	MsgMarDone="Marcando todas aplicaciones como 'hecho'"
-	MsgPatCryp="Locating y patching CryptID"
-	MsgRemTemp="Borrando archivos temporales"
-	MsgRepData="y reemplazando datos cifrados"
-	MsgSizUnit="B"
-	MsgUnaLoca="Incapaz de ubicar"
-	MsgWarning="Warning"
-	MsgWrnMeta="iTunesMetadata formato cambiado"
-	MsgCopArtw="Copiando Artwork"
-	MsgFakMeta="y fingiendo MetaData"
-	MsgNotMeta="y no MetaData"
-	MsgFoundIt="Found"
-	MsgWasAskd="Asked"
-	MsgErrrors="Errores"
-	MsgBrzNoth="nada"
-	MsgMrkDone="Marcar todas hechas           "
-	MskZroDone="Vaciar lista hechas           "
-fi
-# Language ES1 (ascii)
-if [ $RClang = "ES1" ]; then
-	MsgAltMeth="$( echo -ne "Usando m\0351todo alternativo de dumping" )"
-	MsgAnaAppl="$( echo -ne "Analizando aplicaci\0363n" )"
-	MsgAppLoca="$( echo -ne "Ubicaci\0363n" )"
-	MsgBadChoi="$( echo -ne "Mala elecci\0363n" )"
-	MsgBldMenu="$( echo -ne "Construyendo men\0372..." )"
-	MsgDmpUncr="$( echo -ne "Dumping decifrados datos de la aplicaci\0363n" )"
-	MsgIpaInco="$( echo -ne "\0241 Incompleta .ipa" )"
-	MsgDskFull="$( echo -ne "\0277 Disco lleno" )"
-	MsgMnuEmpt="$( echo -ne "vac\0355o" )"
-	MsgVrfDump="$( echo -ne "Verificaci\0363n" )"
-	MsgWrgChoi="$( echo -ne "Opci\0363n incorrecta" )"
-	MsgYouChoi="$( echo -ne "\0277 Su elecci\0363" )"
-	MsgZipStep="$( echo -ne "Compresi\0363n de .ipa (paso" )"
-	MsgComBoth="$( echo -ne "Combinaci\0363n dos partes en fat binary" )"
-	MsgSgnAppl="$( echo -ne "Firma de la aplicaci\0363n" )"
-fi
-# Language ES2 (utf8)
-if [ $RClang = "ES2" ]; then
-	MsgAltMeth="$( echo -ne "Usando m\0303\0251todo alternativo de dumping" )"
-	MsgAnaAppl="$( echo -ne "Analizando aplicaci\0303\0263n" )"
-	MsgAppLoca="$( echo -ne "Ubicaci\0303\0263n" )"
-	MsgBadChoi="$( echo -ne "Mala elecci\0303\0263n" )"
-	MsgBldMenu="$( echo -ne "Construyendo men\0303\0272..." )"
-	MsgDmpUncr="$( echo -ne "Dumping decifrados datos de la aplicaci\0303\0263n" )"
-	MsgIpaInco="$( echo -ne "\0302\0241 Incompleta .ipa" )"
-	MsgDskFull="$( echo -ne "\0302\0277 Disco lleno" )"
-	MsgMnuEmpt="$( echo -ne "vac\0303\0255o" )"
-	MsgVrfDump="$( echo -ne "Verificaci\0303\0263n" )"
-	MsgWrgChoi="$( echo -ne "Opci\0303\0263n incorrecta" )"
-	MsgYouChoi="$( echo -ne "\0302\0277 Su elecci\0303\0263" )"
-	MsgZipStep="$( echo -ne "Compresi\0303\0263n de .ipa (paso" )"
-	MsgComBoth="$( echo -ne "Combinaci\0303\0263n dos partes en fat binary" )"
-	MsgSgnAppl="$( echo -ne "Firma de la aplicaci\0303\0263n" )"
-fi
-
-# Language DE1 or DE2. Translation by Ushnak.
-if [ $RClang = "DE1" -o $RClang = "DE2" ]; then
-	MsgAltMeth="Alternative Methode zum Dumpen"
-	MsgAnaAppl="Analyse der App"
-	MsgAppLoca="Suche"
-	MsgBrzMode="Berzerker Modus: ALLES wird gecrackt"
-	MsgCntFind="Nicht aufzufinden:"
-	MsgCopExec="Kopieren der Executable"
-	MsgCreDire="Erstellen der Ordner"
-	MsgDskFull="Kein Speicher mehr"
-	MsgInsCydi="Installieren mit Cydia"
-	MsgIpaDone="Fertig"
-	MsgMnuEmpt="leer"
-	MsgMarDone="Alle Apps als gecrackt markieren"
-	MsgPatCryp="Aufinden und patchen der CryptID"
-	MsgSizUnit="B"
-	MsgWrgChoi="Schlechte Wahl"
-	MsgWarning="Warnung"
-	MsgYouChoi="Ihre Wahl"
-	MsgZipStep="Kompression der .ipa (Schritt"
-	MsgSgnAppl="Signieren der App"
-	MsgCopArtw="Kopieren des Artworks"
-	MsgFakMeta="und der falschen MetaData"
-	MsgNotMeta="und keine MetaData"
-	MsgFoundIt="Gefunden"
-	MsgWasAskd="Angefragt"
-	MsgErrrors="Fehler"
-	MsgBrzNoth="Nichts"
-fi
-# Language DE1 (ascii). Translation by Ushnak.
-if [ $RClang = "DE1" ]; then
-	MsgBadChoi="$( echo -ne "Ung\0374ltige Wahl" )"
-	MsgBldMenu="$( echo -ne "Aufbau des Men\0374s..." )"
-	MsgDmpUncr="$( echo -ne "Dumping von unverschl\0374sselten Daten der App" )"
-	MsgIpaInco="$( echo -ne "Unvollst\0344ndige .ipa" )"
-	MsgEraMemo="$( echo -ne "L\0366schen des Zwischenspeichers" )"
-	MsgRemTemp="$( echo -ne "L\0366schen des Speichers" )"
-	MsgRepData="$( echo -ne "und Austausch der verschl\0374sselten Daten" )"
-	MsgUnaLoca="$( echo -ne "Unm\0366glich zu Finden" )"
-	MsgVrfDump="$( echo -ne "\0334perpr\0374fen des Dumps" )"
-	MsgWrnMeta="$( echo -ne "Das Format der iTunesMetaData wurde ge\0344ndert" )"
-	MsgComBoth="$( echo -ne "Zusammensetzung der zwei Bin\0344rdateien" )"
-	MsgMrkDone="$( echo -ne "Alles als angew\0344hlt           " )"
-	MskZroDone="$( echo -ne "Liste der angew\0344hlten l\0366schen " )"
-fi
-# Language DE2 (utf8). Translation by Ushnak.
-if [ $RClang = "DE2" ]; then
-	MsgBadChoi="$( echo -ne "Ung\0303\0274ltige Wahl" )"
-	MsgBldMenu="$( echo -ne "Aufbau des Men\0303\0274s..." )"
-	MsgDmpUncr="$( echo -ne "Dumping von unverschl\0303\0274sselten Daten der App" )"
-	MsgIpaInco="$( echo -ne "Unvollst\0303\0244ndige .ipa" )"
-	MsgEraMemo="$( echo -ne "L\0303\0266schen des Zwischenspeichers" )"
-	MsgRemTemp="$( echo -ne "L\0303\0266schen des Speichers" )"
-	MsgRepData="$( echo -ne "und Austausch der verschl\0303\0274sselten Daten" )"
-	MsgUnaLoca="$( echo -ne "Unm\0303\0266glich zu Finden" )"
-	MsgVrfDump="$( echo -ne "\0303\0234perpr\0303\0274fen des Dumps" )"
-	MsgWrnMeta="$( echo -ne "Das Format der iTunesMetaData wurde ge\0303\0244ndert" )"
-	MsgComBoth="$( echo -ne "Zusammensetzung der zwei Bin\0303\0244rdateien" )"
-	MsgMrkDone="$( echo -ne "Alles als angew\0303\0244hlt           " )"
-	MskZroDone="$( echo -ne "Liste der angew\0303\0244hlten l\0303\0266schen " )"
-fi
-
-# Language IT1 and IT2. Translation by Wfede21.
-if [ $RClang = "IT1" -o $RClang = "IT2" ]; then
-	MsgAltMeth="Metodo alternativo di dump"
-	MsgAnaAppl="Analisi applicazione"
-	MsgAppLoca="Localizzo"
-	MsgBadChoi="Scelta sbagliata"
-	MsgBldMenu="Costruisco il menu..."
-	MsgCntFind="Impossibile trovare"
-	MsgCopExec="e copio l'eseguibile"
-	MsgCreDire="Creo le cartelle"
-	MsgDmpUncr="Dump dei dati non criptati dall'applicazione"
-	MsgIpaInco=".ipa non completa"
-	MsgDskFull="Memoria piena"
-	MsgEraMemo="Cancellando file di memoria"
-	MsgInsCydi="Installa da Cydia"
-	MsgIpaDone="Fatto come"
-	MsgMnuEmpt="vuoto"
-	MsgMarDone="Tutte le app craccate"
-	MsgPatCryp="Trovo e sistemo il CryptID"
-	MsgRemTemp="Rimozione file temporanei"
-	MsgRepData="e sostituisco i dati criptati"
-	MsgSizUnit="B"
-	MsgUnaLoca="Impossibile trovare"
-	MsgVrfDump="Controllo dump"
-	MsgWrgChoi="Scelta sbagliata"
-	MsgWarning="Attenzione"
-	MsgWrnMeta="formato iTunesMetadata cambiato"
-	MsgYouChoi="La tua scelta"
-	MsgZipStep="Compressione .ipa (passo"
-	MsgComBoth="Combino le parti in uno"
-	MsgSgnAppl="Signing the application"
-	MsgCopArtw="Copia di Artwork"
-	MsgFakMeta="e falsifico MetaData"
-	MsgNotMeta="e niente MetaData"
-	MsgFoundIt="Trovato"
-	MsgWasAskd="Chiesto"
-	MsgErrrors="Errore"
-	MsgBrzNoth="niente"
-	MsgMrkDone="Segna come tutte craccate     "
-	MskZroDone="Azzera lista app craccate     "
-fi
-# Language IT1 (ascii). Translation by Wfede21.
-if [ $RClang = "IT1" ]; then
-	MsgBrzMode="$( echo -ne "Modalit\0340 Berzerk: crack di tutte le app" )"
-fi
-# Language IT2 (utf8). Translation by Wfede21.
-if [ $RClang = "IT2" ]; then
-	MsgBrzMode="$( echo -ne "Modalit\0303\0240 Berzerk: crack di tutte le app" )"
 fi
 }
 

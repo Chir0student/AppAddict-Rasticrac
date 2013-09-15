@@ -12,6 +12,7 @@ Changelog:
 - v3.1a3
 	- Renamed the version (I think 3.1 is more appropriate than 4 :P)
 	- Fixed the cracking script, now it runs
+	- Removed Languages
 
 Known bugs:
 
