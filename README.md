@@ -16,12 +16,12 @@ Changelog:
 
 Known bugs:
 
-- MEGA API has syntax errors for some reason... needs to be fixed!
+- MEGA API has syntax errors for some reason... needs to be fixed! (Fixing)
 
 - Check the aasubmit.php files, they probably aren't good...
 
 - I'm not sure, how are we gonna combine 3 languages lol
 
-- iTunes Locator doesn't work properly (I think...)
+- iTunes Locator doesn't work properly (I think...) (Fixing)
 
 - Some weird debug messages (not really debug messages, but it looks stupid)
