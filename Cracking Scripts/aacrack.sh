@@ -96,12 +96,14 @@ else
    echo "Mega.co.nz Login file not created"
    echo "Do you want to upload to MEGA? Y/N"
    read megayn
-   if [$megayn = "y"]
+   if [$megayn = "y"];
+   then
 		echo "Creating Login File"
 		# - Creating File
 		echo "{" > ~/.megacmd.json
 		echo "	""User : "$megauser > ~/.megacmd.json
 		echo "	""Password : "$megapass > ~/.megacmd.json
+	fi
 fi
 
 # ======
