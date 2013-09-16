@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Rasticrac v3.1a3 (sept 2013)
 #
@@ -240,9 +240,7 @@ if [ $RCbarSize = "YES" ]; then
 	echo "[${escCyan}${RCxxx:0:$ProgressXXX}${escBlue}${RCsss:0:$ProgressSSS}${escReset}] $ProgressPct%"
 fi
 
-if [ ! -z "$ProgressPct" -a $RCspeak = "YES" ]; then
-	su mobile -c "speak $ProgressPct %" &
-fi
+
 }
 
 
@@ -1655,15 +1653,6 @@ if [ $CPUType != "6" -a $CPUType != "9" -a $CPUType != "11" ]; then
 fi
 
 # Cydia's "Speak" tool is needed for speech support
-if [ ${iOSver:0:1} -lt 4 ]; then
-	RCspeak="NO"
-fi
-if [ $RCspeak = "YES" ]; then
-	if [ ! -e /usr/bin/speak ]; then
-		echo "${Meter3}${escYellow}Note:${escReset} install 'Speak' from Cydia for speech"
-		RCspeak="NO"
-	fi
-fi
 
 if [ ! -e /usr/bin/head ]; then
 	echo "$MsgCntFind 'head'"
@@ -1938,9 +1927,7 @@ if [ ! $RCinaGUI = "YES" ]; then
 
 				CoreFunction "$OneApp" "$2" "$3"
 				if [ $? = 1 ]; then
-					if [ $RCspeak = "YES" ]; then
-						su mobile -c "speak Error !" &
-					fi
+					
 					MenuError=$(($MenuError + 1))
 					if [ -z "$MenuErrorList" ]; then
 						MenuErrorList="${OneApp:62:$(( ${#OneApp} - 66 ))}"
@@ -1963,9 +1950,6 @@ if [ ! $RCinaGUI = "YES" ]; then
 			echo "$MsgErrrors: $MenuErrorList."
 		fi
 
-		if [ $RCspeak = "YES" ]; then
-			su mobile -c "speak Terminated." &
-		fi
 
 		exit 1
 	else
@@ -2134,9 +2118,7 @@ if [ ! $RCinaGUI = "YES" ]; then
 
 										CoreFunction "$tempLoc" "$2" "$3"
 										if [ $? = 1 ]; then
-											if [ $RCspeak = "YES" ]; then
-												su mobile -c "speak Error !" &
-											fi
+											
 											MenuError=$(($MenuError + 1))
 											if [ -z "$MenuErrorList" ]; then
 												MenuErrorList="${tempLoc:62:$(( ${#tempLoc} - 66 ))}"
@@ -2157,9 +2139,6 @@ if [ ! $RCinaGUI = "YES" ]; then
 					done
 					rm -f /tmp/lsdmenu.tmp
 
-					if [ $RCspeak = "YES" ]; then
-						su mobile "speak Finished." &
-					fi
 
 					echo
 					echo "$MsgWasAskd:$MenuAsked  $MsgFoundIt:$MenuFound  $MsgErrrors:$MenuError  OK:$MenuOK."
