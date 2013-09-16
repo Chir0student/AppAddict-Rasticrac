@@ -8,6 +8,10 @@
 # Original Creator Home: https://twitter.com/iRastignac
 # 
 
+if [ $UID -ne 0 ]; then
+   echo "Please run as root!"
+   exit 1
+fi
 
 # ======
 # Please, customize the script first !
@@ -100,13 +104,14 @@ else
    read megayn
    if [ $megayn = "y" ];
    then
-		echo "Creating Login File"
+		echo "Creating Login File..."
 		# - Creating File
-		echo "{" > "~/.megacmd.json"
-		echo "User : $megauser" > "~/.megacmd.json"
-		echo "Password : $megapass" > "~/.megacmd.json"
+		echo "{" > "/var/root/.megacmd.json"
+		echo "User : $megauser" >> "/var/root/.megacmd.json"
+		echo "Password : $megapass" >> "/var/root/.megacmd.json"
+		echo "Done!"
    else
-   		echo "Mega upload disabled!"
+   		echo "MEGA uploading disabled!"
    fi
 fi
 
