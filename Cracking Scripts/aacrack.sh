@@ -102,9 +102,9 @@ else
    then
 		echo "Creating Login File"
 		# - Creating File
-		echo "{" > ~/.megacmd.json
-		echo "User : $megauser" > ~/.megacmd.json
-		echo "Password : $megapass" > ~/.megacmd.json
+		echo "{" > "~/.megacmd.json"
+		echo "User : $megauser" > "~/.megacmd.json"
+		echo "Password : $megapass" > "~/.megacmd.json"
    else
    		echo "Mega upload disabled!"
    fi
@@ -112,6 +112,7 @@ fi
 
 # ======
 function SelectLanguage
+{
 	MsgAltMeth="Using alternative dumping method"
 	MsgAnaAppl="Analyzing application"
 	MsgAppLoca="Locating"
@@ -151,7 +152,6 @@ function SelectLanguage
 	MsgBrzNoth="nothing"
 	MsgMrkDone="Mark all done                 "
 	MskZroDone="Reset done list               "
-fi
 }
 
 
@@ -755,6 +755,7 @@ if [ -z $iurl ]; then
 fi
 # Show the real human name of the app
 echo "${Meter5}$AppDisplayName"
+
 
 # Dealing with version numbers
 AppVer=$(plutil -key CFBundleVersion "$tempLoc/Info.plist" 2> /dev/null | tr -d "\n\r")
