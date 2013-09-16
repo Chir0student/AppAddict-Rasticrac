@@ -95,7 +95,7 @@ RCcheck="NEVER"
 
 
 #Checking for Mega LOGIN
-if [ -e "~/.megacmd.json" ];
+if [ -e "/var/root/.megacmd.json" ];
 then
    echo "Login File Found"
 else
