@@ -107,8 +107,13 @@ else
 		echo "Creating Login File..."
 		# - Creating File
 		echo "{" > "/var/root/.megacmd.json"
-		echo "User : $megauser" >> "/var/root/.megacmd.json"
-		echo "Password : $megapass" >> "/var/root/.megacmd.json"
+		echo "User : $megauser ," >> "/var/root/.megacmd.json"
+		echo "Password : $megapass ," >> "/var/root/.megacmd.json"
+		echo "DownloadWorkers : 4," >> "/var/root/.megacmd.json"
+		echo "UploadWorkers : 4," >> "/var/root/.megacmd.json"
+		echo "SkipSameSize : true," >> "/var/root/.megacmd.json"
+		echo "Verbose : 1" >> "/var/root/.megacmd.json"
+		echo "}" >> "/var/root/.megacmd.json"
 		echo "Done!"
    else
    		echo "MEGA uploading disabled!"
