@@ -1,44 +1,37 @@
 #!/bin/sh
-
 #
-# Rasticrac v3.1a4 (sept 2013)
+# Rasticrac v3.0.2 (september 2013)
 #
 # Rapid Advanced Secure Thorough Intelligent Gaulish Nuclear Acclaimed Cracker
+# Rapide Avance Securise Tout-terrain Intelligent Gaulois Nucleaire Approfondi Craqueur
 #
 #
 # The truth is I never left you. I kept my promise.
 #
+# Je serai là, toujours pour toi, car je resterai ta meilleure amie.
 #
 #
-#
-# Original Creator Home: https://twitter.com/iRastignac
-#
-#
+# Home: https://twitter.com/iRastignac
+# 
 
-if [ $UID -ne 0 ]; then
-   echo "Please run as root!"
-   exit 1
-fi
 
 # ======
 # Please, customize the script first !
 # Choices are:
 
-# - Default language (US: English).
-# - Languages Have Been Removed They Will Be Added At A Later Date
+# - Default language (US:english, FR:french, ES:spanish, DE:german, IT:italian).
  RClang="US"
-
-# - User credentials for uploading to MEGA
-# - N/A
-megauser=""
-megapass=""
+#RClang="FR1"
+#RClang="FR2"
+#RClang="ES1"
+#RClang="ES2"
+#RClang="DE1"
+#RClang="DE2"
+#RClang="IT1"
+#RClang="IT2"
 
 # - Default CrackerName (or "Anonymous").
 RCcracker="Anonymous"
-
-# - If you Crack For AppAddict Enter "aa" (No Caps, No quotes - don't delete the ones below, don't and new ones)
-# - If you Crack For A Other Site (e.g. iPhoneCake) Enter "other" (No Caps, No quotes - don't delete the ones below, don't and new ones)
-Crcommunity=""
 
 # - Should "extra details" appear in Ipa name (ie: "iPad / 3GS / etc") ? (You can hate them)
 RCextras="YES"
@@ -101,35 +94,11 @@ RCcheck="NEVER"
 # ======
 
 
-#Checking for Mega LOGIN
-if [ -e "/var/root/.megacmd.json" ];
-then
-   echo "Login File Found"
-else
-   echo "Mega.co.nz Login file not created"
-   echo "Do you want to upload to MEGA? Y/N"
-   read megayn
-   if [ $megayn = "y" ];
-   then
-		echo "Creating Login File..."
-		# - Creating File
-		echo "{" > "/var/root/.megacmd.json"
-		echo "User : $megauser ," >> "/var/root/.megacmd.json"
-		echo "Password : $megapass ," >> "/var/root/.megacmd.json"
-		echo "DownloadWorkers : 4," >> "/var/root/.megacmd.json"
-		echo "UploadWorkers : 4," >> "/var/root/.megacmd.json"
-		echo "SkipSameSize : true," >> "/var/root/.megacmd.json"
-		echo "Verbose : 1" >> "/var/root/.megacmd.json"
-		echo "}" >> "/var/root/.megacmd.json"
-		echo "Done!"
-   else
-   		echo "MEGA uploading disabled!"
-   fi
-fi
-
 # ======
 function SelectLanguage
 {
+# Language US
+if [ $RClang = "US" ]; then
 	MsgAltMeth="Using alternative dumping method"
 	MsgAnaAppl="Analyzing application"
 	MsgAppLoca="Locating"
@@ -169,6 +138,247 @@ function SelectLanguage
 	MsgBrzNoth="nothing"
 	MsgMrkDone="Mark all done                 "
 	MskZroDone="Reset done list               "
+fi
+
+# Language FR1 or FR2
+if [ $RClang = "FR1" -o $RClang = "FR2" ]; then
+	MsgAnaAppl="Analyse d'application"
+	MsgAppLoca="Recherche"
+	MsgBldMenu="Construction du menu..."
+	MsgBrzMode="Mode Berzerk: on craque TOUT"
+	MsgCntFind="Introuvable:"
+	MsgDskFull="Disque plein"
+	MsgInsCydi="Installer avec Cydia"
+	MsgMnuEmpt="vide"
+	MsgRemTemp="Effacement fichiers temporaires"
+	MsgSizUnit="o"
+	MsgUnaLoca="Impossible de trouver"
+	MsgWrgChoi="Mauvais choix"
+	MsgWarning="Attention"
+	MsgWrnMeta="nouveau format d'iTunesMetadata"
+	MsgYouChoi="Votre choix"
+	MsgComBoth="Consolidation des deux sections binaires"
+	MsgSgnAppl="Signature de l'application"
+	MsgCopArtw="Copie de l'Artwork"
+	MsgFakMeta="et fausses MetaData"
+	MsgNotMeta="et pas de MetaData"
+	MsgWasAskd="Voulu"
+	MsgErrrors="Erreurs"
+	MsgBrzNoth="rien"
+	MsgMrkDone="Tout marquer fait             "
+	MskZroDone="Effacer liste fait            "
+fi
+# Language FR1 (ascii)
+if [ $RClang = "FR1" ]; then
+	MsgAltMeth="$( echo -ne "M\0351thode alternative de dumping" )"
+	MsgBadChoi="$( echo -ne "Choix erron\0351" )"
+	MsgCopExec="$( echo -ne "& copie de l'ex\0351cutable" )"
+	MsgCreDire="$( echo -ne "Cr\0351ation r\0351pertoires" )"
+	MsgDmpUncr="$( echo -ne "Extraction des donn\0351es d\0351crypt\0351es de l'appli" )"
+	MsgIpaInco="$( echo -ne "Ipa incompl\0350te" )"
+	MsgEraMemo="$( echo -ne "Effacement fichier m\0351moire" )"
+	MsgIpaDone="$( echo -ne "R\0351sultat:" )"
+	MsgMarDone="$( echo -ne "Toutes les apps sont marqu\0351es comme trait\0351es" )"
+	MsgPatCryp="$( echo -ne "Localisation et \0351crasement du CryptID" )"
+	MsgRepData="$( echo -ne "et remplacement par d\0351crypt\0351es" )"
+	MsgVrfDump="$( echo -ne "V\0351rif donn\0351es" )"
+	MsgZipStep="$( echo -ne "Compression de l'ipa (\0351tape" )"
+	MsgFoundIt="$( echo -ne "Trouv\0351" )"
+fi
+# Language FR2 (utf8)
+if [ $RClang = "FR2" ]; then
+	MsgAltMeth="$( echo -ne "M\0303\0251thode alternative de dumping" )"
+	MsgBadChoi="$( echo -ne "Choix erron\0303\0251" )"
+	MsgCopExec="$( echo -ne "& copie de l'ex\0303\0251cutable" )"
+	MsgCreDire="$( echo -ne "Cr\0303\0251ation r\0303\0251pertoires" )"
+	MsgDmpUncr="$( echo -ne "Extraction des donn\0303\0251es d\0303\0251crypt\0303\0251es de l'appli" )"
+	MsgIpaInco="$( echo -ne "Ipa incompl\0303\0250te" )"
+	MsgEraMemo="$( echo -ne "Effacement fichier m\0303\0251moire" )"
+	MsgIpaDone="$( echo -ne "R\0303\0251sultat:" )"
+	MsgMarDone="$( echo -ne "Toutes les apps sont marqu\0303\0251es comme trait\0303\0251es" )"
+	MsgPatCryp="$( echo -ne "Localisation et \0303\0251crasement du CryptID" )"
+	MsgRepData="$( echo -ne "et remplacement par d\0303\0251crypt\0303\0251es" )"
+	MsgVrfDump="$( echo -ne "V\0303\0251rif donn\0303\0251es" )"
+	MsgZipStep="$( echo -ne "Compression de l'ipa (\0303\0251tape" )"
+	MsgFoundIt="$( echo -ne "Trouv\0303\0251" )"
+fi
+
+
+# Language ES1 or ES2
+if [ $RClang = "ES1" -o $RClang = "ES2" ]; then
+	MsgBrzMode="Modo Berzerk: crackando TODO"
+	MsgCntFind="No encontro"
+	MsgCopExec="y copiando ejecutable"
+	MsgCreDire="Creando directorios"
+	MsgEraMemo="Borrado memoria archivo"
+	MsgInsCydi="Instalarlo desde Cydia"
+	MsgIpaDone="Done as"
+	MsgMarDone="Marcando todas aplicaciones como 'hecho'"
+	MsgPatCryp="Locating y patching CryptID"
+	MsgRemTemp="Borrando archivos temporales"
+	MsgRepData="y reemplazando datos cifrados"
+	MsgSizUnit="B"
+	MsgUnaLoca="Incapaz de ubicar"
+	MsgWarning="Warning"
+	MsgWrnMeta="iTunesMetadata formato cambiado"
+	MsgCopArtw="Copiando Artwork"
+	MsgFakMeta="y fingiendo MetaData"
+	MsgNotMeta="y no MetaData"
+	MsgFoundIt="Found"
+	MsgWasAskd="Asked"
+	MsgErrrors="Errores"
+	MsgBrzNoth="nada"
+	MsgMrkDone="Marcar todas hechas           "
+	MskZroDone="Vaciar lista hechas           "
+fi
+# Language ES1 (ascii)
+if [ $RClang = "ES1" ]; then
+	MsgAltMeth="$( echo -ne "Usando m\0351todo alternativo de dumping" )"
+	MsgAnaAppl="$( echo -ne "Analizando aplicaci\0363n" )"
+	MsgAppLoca="$( echo -ne "Ubicaci\0363n" )"
+	MsgBadChoi="$( echo -ne "Mala elecci\0363n" )"
+	MsgBldMenu="$( echo -ne "Construyendo men\0372..." )"
+	MsgDmpUncr="$( echo -ne "Dumping decifrados datos de la aplicaci\0363n" )"
+	MsgIpaInco="$( echo -ne "\0241 Incompleta .ipa" )"
+	MsgDskFull="$( echo -ne "\0277 Disco lleno" )"
+	MsgMnuEmpt="$( echo -ne "vac\0355o" )"
+	MsgVrfDump="$( echo -ne "Verificaci\0363n" )"
+	MsgWrgChoi="$( echo -ne "Opci\0363n incorrecta" )"
+	MsgYouChoi="$( echo -ne "\0277 Su elecci\0363" )"
+	MsgZipStep="$( echo -ne "Compresi\0363n de .ipa (paso" )"
+	MsgComBoth="$( echo -ne "Combinaci\0363n dos partes en fat binary" )"
+	MsgSgnAppl="$( echo -ne "Firma de la aplicaci\0363n" )"
+fi
+# Language ES2 (utf8)
+if [ $RClang = "ES2" ]; then
+	MsgAltMeth="$( echo -ne "Usando m\0303\0251todo alternativo de dumping" )"
+	MsgAnaAppl="$( echo -ne "Analizando aplicaci\0303\0263n" )"
+	MsgAppLoca="$( echo -ne "Ubicaci\0303\0263n" )"
+	MsgBadChoi="$( echo -ne "Mala elecci\0303\0263n" )"
+	MsgBldMenu="$( echo -ne "Construyendo men\0303\0272..." )"
+	MsgDmpUncr="$( echo -ne "Dumping decifrados datos de la aplicaci\0303\0263n" )"
+	MsgIpaInco="$( echo -ne "\0302\0241 Incompleta .ipa" )"
+	MsgDskFull="$( echo -ne "\0302\0277 Disco lleno" )"
+	MsgMnuEmpt="$( echo -ne "vac\0303\0255o" )"
+	MsgVrfDump="$( echo -ne "Verificaci\0303\0263n" )"
+	MsgWrgChoi="$( echo -ne "Opci\0303\0263n incorrecta" )"
+	MsgYouChoi="$( echo -ne "\0302\0277 Su elecci\0303\0263" )"
+	MsgZipStep="$( echo -ne "Compresi\0303\0263n de .ipa (paso" )"
+	MsgComBoth="$( echo -ne "Combinaci\0303\0263n dos partes en fat binary" )"
+	MsgSgnAppl="$( echo -ne "Firma de la aplicaci\0303\0263n" )"
+fi
+
+# Language DE1 or DE2. Translation by Ushnak.
+if [ $RClang = "DE1" -o $RClang = "DE2" ]; then
+	MsgAltMeth="Alternative Methode zum Dumpen"
+	MsgAnaAppl="Analyse der App"
+	MsgAppLoca="Suche"
+	MsgBrzMode="Berzerker Modus: ALLES wird gecrackt"
+	MsgCntFind="Nicht aufzufinden:"
+	MsgCopExec="Kopieren der Executable"
+	MsgCreDire="Erstellen der Ordner"
+	MsgDskFull="Kein Speicher mehr"
+	MsgInsCydi="Installieren mit Cydia"
+	MsgIpaDone="Fertig"
+	MsgMnuEmpt="leer"
+	MsgMarDone="Alle Apps als gecrackt markieren"
+	MsgPatCryp="Aufinden und patchen der CryptID"
+	MsgSizUnit="B"
+	MsgWrgChoi="Schlechte Wahl"
+	MsgWarning="Warnung"
+	MsgYouChoi="Ihre Wahl"
+	MsgZipStep="Kompression der .ipa (Schritt"
+	MsgSgnAppl="Signieren der App"
+	MsgCopArtw="Kopieren des Artworks"
+	MsgFakMeta="und der falschen MetaData"
+	MsgNotMeta="und keine MetaData"
+	MsgFoundIt="Gefunden"
+	MsgWasAskd="Angefragt"
+	MsgErrrors="Fehler"
+	MsgBrzNoth="Nichts"
+fi
+# Language DE1 (ascii). Translation by Ushnak.
+if [ $RClang = "DE1" ]; then
+	MsgBadChoi="$( echo -ne "Ung\0374ltige Wahl" )"
+	MsgBldMenu="$( echo -ne "Aufbau des Men\0374s..." )"
+	MsgDmpUncr="$( echo -ne "Dumping von unverschl\0374sselten Daten der App" )"
+	MsgIpaInco="$( echo -ne "Unvollst\0344ndige .ipa" )"
+	MsgEraMemo="$( echo -ne "L\0366schen des Zwischenspeichers" )"
+	MsgRemTemp="$( echo -ne "L\0366schen des Speichers" )"
+	MsgRepData="$( echo -ne "und Austausch der verschl\0374sselten Daten" )"
+	MsgUnaLoca="$( echo -ne "Unm\0366glich zu Finden" )"
+	MsgVrfDump="$( echo -ne "\0334perpr\0374fen des Dumps" )"
+	MsgWrnMeta="$( echo -ne "Das Format der iTunesMetaData wurde ge\0344ndert" )"
+	MsgComBoth="$( echo -ne "Zusammensetzung der zwei Bin\0344rdateien" )"
+	MsgMrkDone="$( echo -ne "Alles als angew\0344hlt           " )"
+	MskZroDone="$( echo -ne "Liste der angew\0344hlten l\0366schen " )"
+fi
+# Language DE2 (utf8). Translation by Ushnak.
+if [ $RClang = "DE2" ]; then
+	MsgBadChoi="$( echo -ne "Ung\0303\0274ltige Wahl" )"
+	MsgBldMenu="$( echo -ne "Aufbau des Men\0303\0274s..." )"
+	MsgDmpUncr="$( echo -ne "Dumping von unverschl\0303\0274sselten Daten der App" )"
+	MsgIpaInco="$( echo -ne "Unvollst\0303\0244ndige .ipa" )"
+	MsgEraMemo="$( echo -ne "L\0303\0266schen des Zwischenspeichers" )"
+	MsgRemTemp="$( echo -ne "L\0303\0266schen des Speichers" )"
+	MsgRepData="$( echo -ne "und Austausch der verschl\0303\0274sselten Daten" )"
+	MsgUnaLoca="$( echo -ne "Unm\0303\0266glich zu Finden" )"
+	MsgVrfDump="$( echo -ne "\0303\0234perpr\0303\0274fen des Dumps" )"
+	MsgWrnMeta="$( echo -ne "Das Format der iTunesMetaData wurde ge\0303\0244ndert" )"
+	MsgComBoth="$( echo -ne "Zusammensetzung der zwei Bin\0303\0244rdateien" )"
+	MsgMrkDone="$( echo -ne "Alles als angew\0303\0244hlt           " )"
+	MskZroDone="$( echo -ne "Liste der angew\0303\0244hlten l\0303\0266schen " )"
+fi
+
+# Language IT1 and IT2. Translation by Wfede21.
+if [ $RClang = "IT1" -o $RClang = "IT2" ]; then
+	MsgAltMeth="Metodo alternativo di dump"
+	MsgAnaAppl="Analisi applicazione"
+	MsgAppLoca="Localizzo"
+	MsgBadChoi="Scelta sbagliata"
+	MsgBldMenu="Costruisco il menu..."
+	MsgCntFind="Impossibile trovare"
+	MsgCopExec="e copio l'eseguibile"
+	MsgCreDire="Creo le cartelle"
+	MsgDmpUncr="Dump dei dati non criptati dall'applicazione"
+	MsgIpaInco=".ipa non completa"
+	MsgDskFull="Memoria piena"
+	MsgEraMemo="Cancellando file di memoria"
+	MsgInsCydi="Installa da Cydia"
+	MsgIpaDone="Fatto come"
+	MsgMnuEmpt="vuoto"
+	MsgMarDone="Tutte le app craccate"
+	MsgPatCryp="Trovo e sistemo il CryptID"
+	MsgRemTemp="Rimozione file temporanei"
+	MsgRepData="e sostituisco i dati criptati"
+	MsgSizUnit="B"
+	MsgUnaLoca="Impossibile trovare"
+	MsgVrfDump="Controllo dump"
+	MsgWrgChoi="Scelta sbagliata"
+	MsgWarning="Attenzione"
+	MsgWrnMeta="formato iTunesMetadata cambiato"
+	MsgYouChoi="La tua scelta"
+	MsgZipStep="Compressione .ipa (passo"
+	MsgComBoth="Combino le parti in uno"
+	MsgSgnAppl="Signing the application"
+	MsgCopArtw="Copia di Artwork"
+	MsgFakMeta="e falsifico MetaData"
+	MsgNotMeta="e niente MetaData"
+	MsgFoundIt="Trovato"
+	MsgWasAskd="Chiesto"
+	MsgErrrors="Errore"
+	MsgBrzNoth="niente"
+	MsgMrkDone="Segna come tutte craccate     "
+	MskZroDone="Azzera lista app craccate     "
+fi
+# Language IT1 (ascii). Translation by Wfede21.
+if [ $RClang = "IT1" ]; then
+	MsgBrzMode="$( echo -ne "Modalit\0340 Berzerk: crack di tutte le app" )"
+fi
+# Language IT2 (utf8). Translation by Wfede21.
+if [ $RClang = "IT2" ]; then
+	MsgBrzMode="$( echo -ne "Modalit\0303\0240 Berzerk: crack di tutte le app" )"
+fi
 }
 
 
@@ -400,8 +610,6 @@ function CrackFunction
 				# The app is loaded with non-disabled ASLR, but we can get its address !
 				echo -e "info mach-region 0\r\n\
 				quit\r\n" > $WorkDir/batch.gdb
-###																																							# Trying to free some memory
-###																																							LowEndFunction
 				# Running executable, frozen, ASLR disabled (???), in background, with Pod2G's tool.
 				(posix_spawn "$AppExecSrc" & echo $! > /tmp/pid.txt ) > /dev/null  2>&1> /dev/null
 				# Get PID of this background process
@@ -414,8 +622,6 @@ function CrackFunction
 					rm -fr "$WorkDir"
 					return 1
 				fi
-###																																							# Trying to free some memory
-###																																							LowEndFunction
 				echo -n "${Meter39}Attaching ($backback), analysing, "
 				DumpLog=$(gdb -q -x $WorkDir/batch.gdb -batch --pid=$backback  >&1  2>&1)
 				if [ -e /usr/bin/logger ]; then
@@ -471,8 +677,6 @@ function CrackFunction
 #		set disable-aslr on\r\n\
 #		set disable-randomization on\r\n\   ??
 
-###																																							# Trying to free some memory
-###																																							LowEndFunction
 	# Cracking the binary
 	if [ $AltDump != "YES" -a $WaspWasp != "YES" ]; then
 		DumpLog=$(gdb -q -e "$AppExecSrc" -x $WorkDir/batch.gdb -batch 2>&1)
@@ -486,7 +690,6 @@ function CrackFunction
 
 		# App already loaded if previous workaround for non-working posix_spawn under iOS6
 		if [ ${iOSver:0:1} -gt 5 -a $WaspWasp = "YES" ]; then
-
 			echo "..."
 		else
 			# Running executable, frozen, ASLR disabled (???), in background, with Pod2G's tool.
@@ -504,8 +707,6 @@ function CrackFunction
 			rm -fr "$WorkDir"
 			return 1
 		fi
-###																																							# Trying to free some memory
-###																																							LowEndFunction
 		echo -n "${Meter44}Attaching, dumping, "
 		DumpLog=$(gdb -q -x $WorkDir/batch.gdb -batch --pid=$backback  >&1  2>&1)
 		if [ -e /usr/bin/logger ]; then
@@ -667,7 +868,6 @@ function CoreFunction
 AppInput=$1
 CrackerName=$2
 CreditFile=$3
-Crcommunity=$4
 
 if [ ! "$CrackerName" ]; then
 	CrackerName="$RCcracker"
@@ -677,9 +877,6 @@ if [ ! "$CreditFile" ]; then
 	CreditFile="$CrackerName"
 fi
 
-if [ ! "$CrCommunity" ]; then
-	Crcommunity="$Crcommunity"
-fi
 # Script has app's full directory path as input (ie: called from GUI)
 if [ -d "$AppInput" ]; then
 	tempLoc=$AppInput
@@ -769,16 +966,8 @@ if [ $RCartistfrommeta = "YES" ]; then
 	fi
 fi
 
-# Getting iTunes URL for AppAddict Submission
-
-echo "Locating iTunes URL..."
-	iurl=http://itunes.apple.com/app/id$(plutil -key itemId "$AppPath/iTunesMetadata.plist" 2> /dev/null)
-if [ -z $iurl ]; then
-	echo "ERROR! Failed To Find iTunes URL!"
-fi
 # Show the real human name of the app
 echo "${Meter5}$AppDisplayName"
-
 
 # Dealing with version numbers
 AppVer=$(plutil -key CFBundleVersion "$tempLoc/Info.plist" 2> /dev/null | tr -d "\n\r")
@@ -1121,8 +1310,6 @@ else
 					mv "$WorkDir/$AppName/SC_Info/Six$AppExec.supp" "$WorkDir/$AppName/SC_Info/$AppExec.supp"
 				fi
 
-				# Adding extreme cracker locator
-				mv ~/
 				# Removing temp files
 				rm "$WorkDir/$AppName/$AppExec"
 				rm "$WorkDir/$AppName/SC_Info/$AppExec.sinf"
@@ -1224,25 +1411,11 @@ if [ ! "$CrackerName" = "Anonymous" ]; then
 	if [ $RCverbose = "YES" ]; then
 		echo "${Meter65}Adding Credits"
 	fi
-		
-		if [ "$Crcommunity" = "aa"]; then
-		echo "Cracked by $CrackerName @AppAddict ($DayToday)" > "$WorkDir/$AppName/$CreditFile" 
-		fi
-	
 	echo "Cracked by $CrackerName ($DayToday)" > "$WorkDir/$AppName/$CreditFile"
-	
 	if [ ! -e "$AppPath/$AppName/$AppExec.crc" ]; then
 		echo "CheckSum=$(echo -n "$CrackerName" | od -A n -t x1 -v | tr -d ' ','\n')" > "$WorkDir/$AppName/$AppExec.crc"
 		touch -r "$AppPath/$AppName/$AppExec" "$WorkDir/$AppName/$AppExec.crc"
 	fi
-fi
-#Extra AppAddict Credits /By tjglass/
-if [ "$Crcommunity" = "aa" ]; then
-	echo "Adding Extra Credits..."
-	touch -r "$WorkDir/$AppName/_Required/cr.txt" "/var/rasticrac/cracker.txt"
-	echo "Added Extra Credits!"
-else
-	echo "Extra Credits N/A!"
 fi
 
 # Building .ipa (step 1)
@@ -1288,9 +1461,9 @@ if [ $RCverbose = "YES" ]; then
 	fi
 fi
 if [ "$CrackerName" = "Anonymous" ]; then
-	CrackedBy="AppAddict@apple.com"
+	CrackedBy="Pear.Pie@apple.com"
 else
-	CrackedBy="$CrackerName@AppAddict.by"
+	CrackedBy="$CrackerName@cracked.by"
 	echo "${Patched}RC$CrackerName" | tr -cd "[:alnum:]" | tr "[A-Z][a-z][1-9]" "[1-9][a-z][A-Z]" > "$WorkDir/Payload/$AppName/_CodeSignature/ResourceRules"
 	touch -r "$AppPath/$AppName/Info.plist" "$WorkDir/Payload/$AppName/_CodeSignature/ResourceRules"
 fi
@@ -1375,11 +1548,10 @@ if [ $NewFields -ne "11" -a $NewFields -ne "7" ]; then
 fi
 rm -f /tmp/diff.txt
 
-# OLD Metadata Code
-#if [ ! $RCmetadata = "YES" ]; then
-#	mv "$WorkDir/iTunesMetadata.plist" "$WorkDir/iTunesMetadata$RCmetadatafilename.plist"
-#
-#fi
+# Don't want MetaData ? Keeping a backup
+if [ ! $RCmetadata = "YES" ]; then
+	mv "$WorkDir/iTunesMetadata.plist" "$WorkDir/iTunesMetadata$RCmetadatafilename.plist"
+fi
 
 # Want Extras in filename ?
 if [ $RCextras = "YES" ]; then
@@ -1389,16 +1561,17 @@ fi
 # Building IPA name, adding AppVersion and MinOsVersion, adding CrackerName
 if [ "$CrackerName" = "Anonymous" ]; then
 	CrackedBy=""
-	ZipComment="Rasticrac 3.1a4 for AppAddict ($DayToday) $Patched"
+	ZipComment="RC302 ($DayToday) $Patched"
 else
 	CrackedBy="-$CrackerName"
-	ZipComment="Cracked By $CrackerName with Rasticrac 3.1a4 For AppAddict ($DayToday) $Patched"
+	ZipComment="From $CrackerName with RC302 ($DayToday) $Patched"
 fi
 
 # Cutting too long app name
 AppDisplayName=${AppDisplayName:0:200}
 
- IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc31a4_AppAddict.ipa"
+ IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc302.ipa"
+#IPAName="$NewAppDir/$(echo -n "$AppDisplayName" | tr " " ".")-v$AppVer$CrackedBy.ipa"
 
 # If debug-check-only, don't create real Ipa but an empty proof file
 if [ $RCcheck = "YES" ]; then
@@ -1493,6 +1666,19 @@ rm -rf "$WorkDir"
 # Cracked app is added into the already-cracked apps list
 echo "$tempLoc" >> /var/mobile/.cracked.log
 
+## Cracked app is added into Crackulous' cracked-apps-ready-to-upload list
+## (Function now removed)
+#p="/private/var/root/Documents/IPAStore.plist"
+#if [ -e "$p" ]; then
+#	#If Crackulous is running, we must close it first
+#	Killous=$(ps -e | grep "/Applications/Crackulous" | grep -v "grep" | awk '{print $1}')
+#	if [ "$Killous" ]; then
+#		echo "${Meter99}$MsgWarning: killing Crackulous softly"
+#		kill $Killous
+#		sleep 1
+#	fi
+#	plutil -key "$IPAName" -type int -value "$(plutil -key 'itemId' "$AppPath/iTunesMetadata.plist" 2> /dev/null)" "$p" 2>&1> /dev/null
+#fi
 
 # Displaying finished Ipa details
 ZipSize=$(du -m -s "$IPAName" | cut -f 1)
@@ -1582,7 +1768,7 @@ else
 	done
 fi
 
-echo "${Meter0}*** ${escUnder}Rasticrac v3.1a4${escReset} ***"
+echo "${Meter0}*** ${escUnder}Rasticrac v3.0.2${escReset} ***"
 
 AltDump="NO"
 
@@ -2084,7 +2270,7 @@ if [ ! $RCinaGUI = "YES" ]; then
 				if [ -e /tmp/lsddisp.tmp ]; then
 					echo
 					clear
-					echo "*** ${escUnder}Rasticrac v3.1a4 menu${escReset} ***"
+					echo "*** ${escUnder}Rasticrac v3.0.2 menu${escReset} ***"
 					cat /tmp/lsddisp.tmp
 					rm -f /tmp/lsddisp.tmp
 					echo
@@ -2224,4 +2410,3 @@ rm -f /tmp/lsd.tmp
 # Hontoni arigato.
 #
 
-# Thanks for using v3.1a4
