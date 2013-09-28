@@ -14,7 +14,7 @@ Changelog:
 	- Fixed the cracking script, now it runs				(Thanks To DblD)
 	- Removed Languages							(To be readded in the future)
 	
--v3.1a4
+- v3.1a4
 	- Core script updated to Rasticrac 3.0.2
 
 Known bugs:
