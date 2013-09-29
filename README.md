@@ -17,7 +17,7 @@ Changelog:
 - v3.1a4
 	- Core script updated to Rasticrac 3.0.2
 
-Known bugs:
+Known bugs/To-Do:
 
 - MEGA API needs to be implemented and fixed, if possible! (Fixing By DblD)
 
@@ -26,3 +26,5 @@ Known bugs:
 - iTunes Locator doesn't work properly (I think...) (Fixing By tjglass)
 
 - Some weird debug messages (not really debug messages, but it looks stupid) (To Come)
+
+- Dumpdecrypted implementation instead of GDB (To come/DblD)
