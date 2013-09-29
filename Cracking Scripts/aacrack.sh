@@ -776,6 +776,7 @@ echo "Locating iTunes URL..."
 if [ -z $iurl ]; then
 	echo "ERROR! Failed To Find iTunes URL!"
 fi
+
 # Show the real human name of the app
 echo "${Meter5}$AppDisplayName"
 
