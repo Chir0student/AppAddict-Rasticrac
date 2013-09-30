@@ -16,6 +16,10 @@ Changelog:
 	
 - v3.1a4
 	- Core script updated to Rasticrac 3.0.2
+	
+- v3.1a5
+	- Added dumpdecrypted in the script (so much faster than the GDB...)
+	- Need further testing with it!
 
 Known bugs/To-Do:
 
@@ -27,4 +31,4 @@ Known bugs/To-Do:
 
 - Some weird debug messages (not really debug messages, but it looks stupid) (To Come)
 
-- Dumpdecrypted implementation instead of GDB (To come/DblD)
+- Dumpdecrypted implementation instead of GDB (To come/DblD) ---- DONE!
