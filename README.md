@@ -31,6 +31,4 @@ Known bugs/To-Do:
 
 - Some weird debug messages (not really debug messages, but it looks stupid) (To Come)
 
-- Dumpdecrypted implementation instead of GDB (To come/DblD) ----- DONE!
-
 - Binary in the cracked ipa has cryptid = 1 (need to fix/DblD)
