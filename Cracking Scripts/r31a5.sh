@@ -1,15 +1,17 @@
 #!/bin/bash
 
 #
-# Rasticrac v3.1a4 (sept 2013)
+# Rasticrac v3.1a5 (oct 2013)
+# By tjglass and DblD [AppAddict]
 #
 # Rapid Advanced Secure Thorough Intelligent Gaulish Nuclear Acclaimed Cracker
 #
 #
 # The truth is I never left you. I kept my promise.
 #
+# This is an improved version of rasticrac that works 3x faster! (Thanks to dumpdecrypted by Stefan Esser)
 #
-#
+# This script will also include an upload and submit feature!
 #
 # Original Creator Home: https://twitter.com/iRastignac
 #
@@ -30,15 +32,15 @@ fi
 
 # - User credentials for uploading to MEGA
 # - N/A
-megauser=""
-megapass=""
+#megauser=""
+#megapass=""
 
 # - Default CrackerName (or "Anonymous").
 RCcracker="Anonymous"
 
 # - If you Crack For AppAddict Enter "aa" (No Caps, No quotes - don't delete the ones below, don't and new ones)
 # - If you Crack For A Other Site (e.g. iPhoneCake) Enter "other" (No Caps, No quotes - don't delete the ones below, don't and new ones)
-Crcommunity=""
+#Crcommunity=""
 
 # - Should "extra details" appear in Ipa name (ie: "iPad / 3GS / etc") ? (You can hate them)
 RCextras="YES"
@@ -61,7 +63,7 @@ RCrealnamemenu="NO"
 
 # - Default compression level is blank (aka "-6"), and is the best speed/size ratio.
 # - Recommended. Upload/download/storage will be good.
- RCcompression=""
+RCcompression=""
 # - Maximum compression ("-9") (also "-8" or "-7") is very very slow, but size is the best.
 # - If your iDevice is fast, if you're not in a hurry, if size matters. Best upload/download/storage.
 #RCcompression="-9"
@@ -82,7 +84,7 @@ RClamestpatchest="YES"
 # - What menu dots do you prefer ?
  RCdots=".............................."
 #RCdots="------------------------------"
-#RCdots="                              "
+#RCdots="			       "
 #RCdots="______________________________"
 
 # Progress bar display
@@ -101,31 +103,31 @@ RCcheck="NEVER"
 # ======
 
 
-#Checking for Mega LOGIN
-if [ -e "/var/root/.megacmd.json" ];
-then
-   echo "Login File Found"
-else
-   echo "Mega.co.nz Login file not created"
-   echo "Do you want to upload to MEGA? Y/N"
-   read megayn
-   if [ $megayn = "y" ];
-   then
-		echo "Creating Login File..."
-		# - Creating File
-		echo "{" > "/var/root/.megacmd.json"
-		echo "User : $megauser ," >> "/var/root/.megacmd.json"
-		echo "Password : $megapass ," >> "/var/root/.megacmd.json"
-		echo "DownloadWorkers : 4," >> "/var/root/.megacmd.json"
-		echo "UploadWorkers : 4," >> "/var/root/.megacmd.json"
-		echo "SkipSameSize : true," >> "/var/root/.megacmd.json"
-		echo "Verbose : 1" >> "/var/root/.megacmd.json"
-		echo "}" >> "/var/root/.megacmd.json"
-		echo "Done!"
-   else
-   		echo "MEGA uploading disabled!"
-   fi
-fi
+# Checking for Mega LOGIN
+# if [ -e "/var/root/.megacmd.json" ];
+# then
+#   echo "Login File Found"
+# else
+#   echo "Mega.co.nz Login file not created"
+#   echo "Do you want to upload to MEGA? Y/N"
+#   read megayn
+#   if [ $megayn = "y" ];
+#   then
+#		 echo "Creating Login File..."
+#		# - Creating File
+#		 echo "{" > "/var/root/.megacmd.json"
+#		 echo "User : $megauser ," >> "/var/root/.megacmd.json"
+#		 echo "Password : $megapass ," >> "/var/root/.megacmd.json"
+#		 echo "DownloadWorkers : 4," >> "/var/root/.megacmd.json"
+#		 echo "UploadWorkers : 4," >> "/var/root/.megacmd.json"
+#		 echo "SkipSameSize : true," >> "/var/root/.megacmd.json"
+#		 echo "Verbose : 1" >> "/var/root/.megacmd.json"
+#		 echo "}" >> "/var/root/.megacmd.json"
+#		 echo "Done!"
+#   else
+#		 echo "MEGA uploading #disabled!"
+#   fi
+# fi
 
 # ======
 function SelectLanguage
@@ -167,8 +169,8 @@ function SelectLanguage
 	MsgWasAskd="Asked"
 	MsgErrrors="Errors"
 	MsgBrzNoth="nothing"
-	MsgMrkDone="Mark all done                 "
-	MskZroDone="Reset done list               "
+	MsgMrkDone="Mark all done		  "
+	MskZroDone="Reset done list		  "
 }
 
 
@@ -259,34 +261,6 @@ fi
 
 
 # ======
-# Begin Dump Function
-function DumpFunction
-{
-	i=$1
-	if [ $RCverbose = "YES" ]; then
-		echo "${Meter26}Dumping Part #$i (${PartType[$i]})"
-	fi
-
-	foo=$( cat "$WorkDir/$AppName/$AppExec" | tail --bytes=+${PartOffset[$i]} | head --bytes=${PartLogicalSize[$i]} > "$WorkDir/$AppName/DumpedPart${PartType[$i]}" 2> /dev/null )
-
-	# Disk full ?
-	if [ ! -e "$WorkDir/$AppName/DumpedPart${PartType[$i]}" ]; then
-		echo "${escRed}$MsgDskFull ?${escReset}"
-		rm -fr "$WorkDir"
-		return 1
-	else
-		if [ $(stat -c%s "$WorkDir/$AppName/DumpedPart${PartType[$i]}") != ${PartLogicalSize[$i]} ]; then
-			echo "${escRed}$MsgDskFull ?${escReset}"
-			rm -fr "$WorkDir"
-			return 1
-		fi
-	fi
-	chmod 777 "$WorkDir/$AppName/DumpedPart${PartType[$i]}"
-	return 0
-}
-
-
-# ======
 # Begin LowEnd Function
 function LowEndFunction
 {
@@ -307,46 +281,18 @@ function LowEndFunction
 # Begin Crack Function
 function CrackFunction
 {
-	# Get the parameters
-	AppExecCur="$1"
-	AppExecSrc="$2"
-	
-	# Decrypt/Dump/Crack
-	cp "/var/root/dumpdecrypted.dylib" "/tmp/RC-$(date +%Y%m%d-%H%M%S)"
+	# Getting app exec
+	# Patching CryptID 01 -> 00
+	cp "/var/root/dumpdecrypted.dylib" "/$WorkDir"
+	cd "/$WorkDir"
 	echo "Cracking the binary..."
-	echo ""
-	DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib $AppExecCur mach-o decryption dumper
-	
-	# Verifying dump
-	if [ $RCverbose = "YES" ]; then
-		echo -n "${Meter50}$MsgVrfDump "
-	fi
-	if [ ! -e "$WorkDir/$AppExecSrc.decrypted" ]; then
-		echo "${escRed}failed ! No dump. See 'syslog'${escReset}"
-		if [ -e /usr/bin/logger ]; then
-			echo "$DumpLog" | logger -t RCdump
-		fi
-		rm -fr "$WorkDir"
-		return 1
-	fi
-	DumpSize=$(stat -c%s "$WorkDir/$AppExecSrc.decrypted")
-	if [ "$DumpSize" != "$CryptSize" ]; then
-		echo "${escRed}failed ! Wrong dump size ($DumpSize/$CryptSize) ${escReset}"
-		if [ -e /usr/bin/logger ]; then
-			echo "$DumpLog" | logger -t RCdump
-		fi
-		rm -fr "$WorkDir"
-		return 1
-	fi
+DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib "$AppPath/$AppName/$AppExec" mach-o decryption dumper
 	
 	# Replacing executable's crypted data with dumped clear data
 	if [ $RCverbose = "YES" ]; then
 		echo "${Meter54}$MsgRepData"
 	fi
-	foo=$(dd seek=1 count=1 obs=$CryptOff ibs=$DumpSize conv=notrunc if="$WorkDir/$AppExecSrc.decrypted" of="$WorkDir/$AppName/$AppExecCur" 2>&1> /dev/null)
-	rm "$WorkDir/$AppExecSrc.decrypted"
-	
-	return 0
+mv "$WorkDir/$AppExec.decrypted" "$WorkDir/$AppName/$AppExec"
 }
 
 
@@ -357,7 +303,7 @@ function CoreFunction
 AppInput=$1
 CrackerName=$2
 CreditFile=$3
-Crcommunity=$4
+#Crcommunity=$4
 
 if [ ! "$CrackerName" ]; then
 	CrackerName="$RCcracker"
@@ -367,9 +313,9 @@ if [ ! "$CreditFile" ]; then
 	CreditFile="$CrackerName"
 fi
 
-if [ ! "$CrCommunity" ]; then
-	Crcommunity="$Crcommunity"
-fi
+#if [ ! "$CrCommunity" ]; then
+#	Crcommunity="$Crcommunity"
+#fi
 # Script has app's full directory path as input (ie: called from GUI)
 if [ -d "$AppInput" ]; then
 	tempLoc=$AppInput
@@ -461,11 +407,11 @@ fi
 
 # Getting iTunes URL for AppAddict Submission
 
-echo "Locating iTunes URL..."
-	iurl=http://itunes.apple.com/app/id$(plutil -key itemId "$AppPath/iTunesMetadata.plist" 2> /dev/null)
-if [ -z $iurl ]; then
-	echo "ERROR! Failed To Find iTunes URL!"
-fi
+# echo "Locating iTunes URL..."
+# iurl=http://itunes.apple.com/app/id$(plutil -#key itemId "$AppPath/iTunesMetadata.plist" 2> #/dev/null)
+# if [ -z $iurl ]; then
+#	 echo "ERROR! Failed To Find iTunes #URL!"
+# fi
 
 # Show the real human name of the app
 echo "${Meter5}$AppDisplayName"
@@ -571,18 +517,30 @@ if [ ! "$CafeBabeIsFat" ]; then
 		echo "${Meter25}Thin Binary found"
 	fi
 	# Thin binary = crack it easy
-	CrackFunction "$AppExec" "$AppPath/$AppName/$AppExec"
+	CrackFunction
 	RetRet=$?
 	if [ $RetRet != 0 ]; then
 		echo "${escRed}Error:${escReset} problem encountered in CrackFunction (Thin)"
 		rm -fr "$WorkDir"
 		return $RetRet
 	fi
-fi
-	
-# Dropping my girlfriend
-if [ -e "$WorkDir/$AppName/CafeBabe.is.Fat" ]; then
-	rm -f "$WorkDir/$AppName/CafeBabe.is.Fat"
+
+else
+
+# Fat is very easy...
+	if [ "$CafeBabeIsFat" ]; then
+		if [ $RCverbose = "YES" ]; then
+			echo "${Meter25}Fat Binary found"
+		fi
+		# Fat binary = crack it easy
+		CrackFunction
+		RetRet=$?
+		if [ $RetRet != 0 ]; then
+			echo "${escRed}Error:${escReset} problem encountered in CrackFunction (Fat)"
+			rm -fr "$WorkDir"
+			return $RetRet
+		fi
+	fi
 fi
 
 # Signing the application with 'ldone' (better than 'ldid').
@@ -604,9 +562,9 @@ if [ ! "$CrackerName" = "Anonymous" ]; then
 		echo "${Meter65}Adding Credits"
 	fi
 		
-		if [ "$Crcommunity" = "aa"]; then
-		echo "Cracked by $CrackerName @AppAddict ($DayToday)" > "$WorkDir/$AppName/$CreditFile" 
-		fi
+#		if [ "$Crcommunity" = "aa"]; then
+#		echo "Cracked by $CrackerName @AppAddict ($DayToday)" > "$WorkDir/$AppName/$CreditFile" 
+#		fi
 	
 	echo "Cracked by $CrackerName ($DayToday)" > "$WorkDir/$AppName/$CreditFile"
 	
@@ -615,14 +573,15 @@ if [ ! "$CrackerName" = "Anonymous" ]; then
 		touch -r "$AppPath/$AppName/$AppExec" "$WorkDir/$AppName/$AppExec.crc"
 	fi
 fi
+
 #Extra AppAddict Credits /By tjglass/
-if [ "$Crcommunity" = "aa" ]; then
-	echo "Adding Extra Credits..."
-	touch -r "$WorkDir/$AppName/_Required/cr.txt" "/var/rasticrac/cracker.txt"
-	echo "Added Extra Credits!"
-else
-	echo "Extra Credits N/A!"
-fi
+#if [ "$Crcommunity" = "aa" ]; then
+#	 echo "Adding Extra Credits..."
+#	 touch -r #"$WorkDir/$AppName/_Required/cr.txt" #"/var/rasticrac/cracker.txt"
+#	 echo "Added Extra Credits!"
+#else
+#	 echo "Extra Credits N/A!"
+#fi
 
 # Building .ipa (step 1)
 mkdir -p "$WorkDir/Payload"
@@ -768,16 +727,16 @@ fi
 # Building IPA name, adding AppVersion and MinOsVersion, adding CrackerName
 if [ "$CrackerName" = "Anonymous" ]; then
 	CrackedBy=""
-	ZipComment="Rasticrac 3.1a4 for AppAddict ($DayToday) $Patched"
+	ZipComment="Rasticrac 3.1a5 for AppAddict ($DayToday) $Patched"
 else
 	CrackedBy="-$CrackerName"
-	ZipComment="Cracked By $CrackerName with Rasticrac 3.1a4 For AppAddict ($DayToday) $Patched"
+	ZipComment="Cracked By $CrackerName with Rasticrac 3.1a5 For AppAddict ($DayToday) $Patched"
 fi
 
 # Cutting too long app name
 AppDisplayName=${AppDisplayName:0:200}
 
- IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc31a4_AppAddict.ipa"
+ IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc31a5_AppAddict.ipa"
 
 # If debug-check-only, don't create real Ipa but an empty proof file
 if [ $RCcheck = "YES" ]; then
@@ -961,7 +920,7 @@ else
 	done
 fi
 
-echo "${Meter0}*** ${escUnder}Rasticrac v3.1a4${escReset} ***"
+echo "${Meter0}*** ${escUnder}Rasticrac v3.1a5${escReset} ***"
 
 AltDump="NO"
 
@@ -970,12 +929,8 @@ if [ ! -e /usr/bin/plutil ]; then
 	exit 1
 fi
 
-if [ ! -e /usr/bin/gdb ]; then
-	echo "$MsgCntFind 'gdb'. $MsgInsCydi: 'GNU Debugger'"
-	exit 1
-fi
-if [ ! -x /usr/bin/gdb ]; then
-	echo "Please 'chmod 777 /usr/bin/gdb'"
+if [ ! -e /var/root/dumpdecrypted.dylib ]; then
+	echo "$MsgCntFind 'dumpdecrypted.dylib'."
 	exit 1
 fi
 
@@ -1035,18 +990,6 @@ if [ ${iOSver:0:1} -gt 5 ]; then
 	AltDump="YES"
 fi
 
-# Check some common too-old-gdb problems
-if [ ${iOSver:0:1} -gt 4 ]; then
-	if [ ! -z "$(ls -l /usr/bin/gdb | grep -e 'May 20  2011' -e 'Aug  3  2011')" ]; then
-		echo "${escRed}STOP:${escReset} 'gdb for iOS5+' needed !"
-		exit 1
-	fi
-fi
-if [ ! -x /usr/bin/gdb ]; then
-	echo "Please 'chmod 777 /usr/bin/gdb'"
-	exit 1
-fi
-
 # Convert compatible CpuType
 if [ $CPUType = "10" ]; then
 	CPUType="9"
@@ -1072,20 +1015,8 @@ if [ ! -e /usr/bin/head ]; then
 	exit 1
 fi
 
-# Show GDB version
-echo "${Meter3}${escYellow}GDB:${escReset} $(gdb --version | head -n 1 | cut -d ')' -f 1 | cut -d '(' -f 2)"
-
 if [ ! -e /usr/bin/tail ]; then
 	echo "$MsgCntFind 'tail'"
-	exit 1
-fi
-
-if [ ! -e /usr/bin/posix_spawn ]; then
-	echo "$MsgCntFind 'posix_spawn'"
-	exit 1
-fi
-if [ ! -x /usr/bin/posix_spawn ]; then
-	echo "Please 'chmod 777 /usr/bin/posix_spawn'"
 	exit 1
 fi
 
@@ -1200,7 +1131,7 @@ if [ $# -lt 1 ]; then
 		# The "-a" flag is not displayed in the help, but it does exist.
 		scr=$(basename $0)
 		echo "List/Help: $scr"
-		echo "     Menu: $scr [-v] -m [CN [CFN]]"
+		echo "	   Menu: $scr [-v] -m [CN [CFN]]"
 		echo " CrackAll: $scr [-v] -all [CN [CFN]]"
 		echo " CrackOne: $scr [-v] AN [CN [CFN]]"
 		echo " MarkDone: $scr -mark"
@@ -1463,7 +1394,7 @@ if [ ! $RCinaGUI = "YES" ]; then
 				if [ -e /tmp/lsddisp.tmp ]; then
 					echo
 					clear
-					echo "*** ${escUnder}Rasticrac v3.1a4 menu${escReset} ***"
+					echo "*** ${escUnder}Rasticrac v3.1a5 menu${escReset} ***"
 					cat /tmp/lsddisp.tmp
 					rm -f /tmp/lsddisp.tmp
 					echo
@@ -1603,4 +1534,4 @@ rm -f /tmp/lsd.tmp
 # Hontoni arigato.
 #
 
-# Thanks for using v3.1a4
+# Thanks for using v3.1a5

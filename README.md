@@ -23,12 +23,10 @@ Changelog:
 
 Known bugs/To-Do:
 
-- MEGA API needs to be implemented and fixed, if possible! (Fixing By DblD)
+- MEGA API needs to be implemented, if possible! (Fixing By DblD)
 
-- Check the aasubmit.php files, they probably aren't good... (To be Fixed By tjglass)
+- Check the aasubmit.php files, they aren't good... (To be Fixed By tjglass)
 
-- iTunes Locator doesn't work properly (I think...) (Fixing By tjglass)
+- iTunes Locator doesn't work properly (Fixing By tjglass)
 
 - Some weird debug messages (not really debug messages, but it looks stupid) (To Come)
-
-- Binary in the cracked ipa has cryptid = 1 (need to fix/DblD)
