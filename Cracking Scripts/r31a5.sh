@@ -281,18 +281,15 @@ function LowEndFunction
 # Begin Crack Function
 function CrackFunction
 {
-	# Getting app exec
+	# Cracking App Executable
 	# Patching CryptID 01 -> 00
-	cp "var/root/dumpdecrypted.dylib" "$WorkDir"
-	cd "$WorkDir"
-	echo "Cracking the binary..."
 	DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib "$AppPath/$AppName/$AppExec" mach-o decryption dumper
 	
 	# Replacing executable's crypted data with dumped clear data
 	if [ $RCverbose = "YES" ]; then
 		echo "${Meter54}$MsgRepData"
 	fi
-	mv "$WorkDir/$AppExec.decrypted" "$WorkDir/$AppName/$AppExec"
+	mv "/var/root/$AppExec.decrypted" "$WorkDir/$AppName/$AppExec"
 }
 
 
