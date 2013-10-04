@@ -286,13 +286,24 @@ function CrackFunction
 	
 	# Cracking App Executable
 	# Patching CryptID 01 -> 00
+<<<<<<< HEAD
 	DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib "$AppPath/$AppName/$AppExec" mach-o decryption dumper
+=======
+	cp "/var/root/dumpdecrypted.dylib" "/$WorkDir"
+	cd "/$WorkDir"
+	echo "Cracking the binary..."
+DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib "$AppPath/$AppName/$AppExec" mach-o decryption dumper
+>>>>>>> parent of 064706f... Nothing much.
 	
 	# Replacing executable's crypted data with dumped clear data
 	if [ $RCverbose = "YES" ]; then
 		echo "${Meter54}$MsgRepData"
 	fi
+<<<<<<< HEAD
 	mv "/var/root/$AppExec.decrypted" "$WorkDir/$AppName/$AppExec"
+=======
+mv "$WorkDir/$AppExec.decrypted" "$WorkDir/$AppName/$AppExec"
+>>>>>>> parent of 064706f... Nothing much.
 }
 
 
