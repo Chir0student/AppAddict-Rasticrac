@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #
 # Rasticrac v3.1a5 (oct 2013)
