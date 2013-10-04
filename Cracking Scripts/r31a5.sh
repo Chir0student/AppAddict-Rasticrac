@@ -281,6 +281,9 @@ function LowEndFunction
 # Begin Crack Function
 function CrackFunction
 {
+	# Remove ASLR - Experiment
+	# python change_mach_o_flags.py --no-pie "$AppPath/$AppName/$AppExec"
+	
 	# Cracking App Executable
 	# Patching CryptID 01 -> 00
 	DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib "$AppPath/$AppName/$AppExec" mach-o decryption dumper
