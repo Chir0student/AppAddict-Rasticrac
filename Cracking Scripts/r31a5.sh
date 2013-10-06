@@ -13,6 +13,8 @@
 #
 # This script will also include an upload and submit feature!
 #
+# Currently this script only works with some apps, since it has a problem handling ASLR (trying to find workarounds)
+#
 # Original Creator Home: https://twitter.com/iRastignac
 #
 #
