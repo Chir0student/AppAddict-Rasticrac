@@ -18,15 +18,16 @@ Changelog:
 	- Core script updated to Rasticrac 3.0.2
 	
 - v3.1a5
-	- Added dumpdecrypted in the script (so much faster than the GDB...)
+	- Added dumpdecrypted in the script (so much faster than the GDB!)
+	- ASLR issues!!! (The script works partially because of ASLR - it cracks apps with no ASLR, just fine!)
 	- Need further testing with it!
 
 Known bugs/To-Do:
 
-- MEGA API needs to be implemented, if possible! (Fixing By DblD)
+- MEGA API needs to be implemented, if possible! (To be fixed By DblD)
 
-- Check the aasubmit.php files, they aren't good... (To be Fixed By tjglass)
+- Check the aasubmit.php files, they aren't good... (To be fixed By tjglass)
 
-- iTunes Locator doesn't work properly (Fixing By tjglass)
+- iTunes Locator doesn't work properly (Fixing By tjglass/DblD)
 
-- Some weird debug messages (not really debug messages, but it looks stupid) (To Come)
+- Issues with ASLR = biggest problem of all!
