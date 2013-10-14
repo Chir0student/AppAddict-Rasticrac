@@ -18,6 +18,7 @@ Changelog:
 	- Core script updated to Rasticrac 3.0.2
 	
 - v3.1a5
+	- iTunes locator works now! (Although, commented out, due to the fact it's not needed yet)
 	- Added dumpdecrypted in the script (so much faster than the GDB!)
 	- ASLR issues!!! (The script works partially because of ASLR - it cracks apps with no ASLR, just fine!)
 	- Need further testing with it!
@@ -28,6 +29,4 @@ Known bugs/To-Do:
 
 - Check the aasubmit.php files, they aren't good... (To be fixed By tjglass)
 
-- iTunes Locator doesn't work properly (Fixing By tjglass/DblD)
-
-- Issues with ASLR = biggest problem of all!
+- Issues with ASLR = biggest problem of all! (might be solved with noaslr script from pod2g, need it compiled tho)
