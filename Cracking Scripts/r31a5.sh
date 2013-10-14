@@ -284,7 +284,11 @@ function LowEndFunction
 function CrackFunction
 {
 	# Remove ASLR - Experiment
-	# python change_mach_o_flags.py --no-pie "$AppPath/$AppName/$AppExec"
+	# 1. Removing ASLR
+	# 2. Resign the binary
+	# 3. Crack it!
+	# removePIE "$AppPath/$AppName/$AppExec"
+	# ldone "$AppPath/$AppName/$AppExec" -s
 	
 	# Cracking App Executable
 	# Patching CryptID 01 -> 00
