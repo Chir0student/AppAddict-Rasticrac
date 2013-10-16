@@ -284,16 +284,14 @@ function LowEndFunction
 function CrackFunction
 {
 	# Remove ASLR - Experiment
-	# 1. Removing ASLR
-	# 2. Resign the binary
-	# 3. Crack it!
-	# removePIE "$AppPath/$AppName/$AppExec"
-	# ldone "$AppPath/$AppName/$AppExec" -s
+	# 1. Removing ASLR with noaslr
+	# 2. Crack it!
+	# noaslr "$AppPath/$AppName/$AppExec"
 	
 	# Cracking App Executable
 	# Patching CryptID 01 -> 00
-	cp "/var/root/dumpdecrypted.dylib" "/$WorkDir"
-	cd "/$WorkDir"
+	cp "/var/root/dumpdecrypted.dylib" "$WorkDir"
+	cd "$WorkDir"
 	echo "Cracking the binary..."
 DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib "$AppPath/$AppName/$AppExec" mach-o decryption dumper
 	
