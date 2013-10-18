@@ -1,6 +1,9 @@
 AppAddict-Rasticrac
 ===================
 
+*This project is on hold as of 18.10.2013.*
+*We are currently working on Brake*
+
 Rasticrac with MEGA.co.nz or Box.net upload and AppAddict submission!
 
 Created by tjglass and DblD
