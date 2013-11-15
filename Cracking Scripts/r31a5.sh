@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Rasticrac v3.1a5 (oct 2013)
+# Rasticrac v3.1a5 (october 2013)
 # By tjglass and DblD [AppAddict]
 #
 # Rapid Advanced Secure Thorough Intelligent Gaulish Nuclear Acclaimed Cracker
@@ -223,6 +223,7 @@ human=$(echo -n "$unicode" | sed -e "s: :_:g" | od -c -A n -v --width=999 | sed 
 	-e "s:342.200.230:':g" \
 	-e "s:342.200.231:':g" \
 	-e 's:342.200.242:-:g' \
+	-e 's:342.200.246:...:g' \
 	-e 's:342.202.254:EUR:g' \
 	-e 's:342.204.242:_:g' \
 	-e 's:342.210.236:Infinity:g' \
@@ -326,6 +327,10 @@ fi
 # Script has app's full directory path as input (ie: called from GUI)
 if [ -d "$AppInput" ]; then
 	tempLoc=$AppInput
+	# Script is called by RemoteRasticrac from "/tmp/"
+	if [ "${AppInput:0:5}" = "/tmp/" ]; then
+		RCremote="YES"
+	fi
 else
 	# Script has app's name as input
 	echo "$MsgAppLoca '$AppInput'"
@@ -745,6 +750,11 @@ AppDisplayName=${AppDisplayName:0:200}
 
  IPAName="$NewAppDir/$AppDisplayName (v$AppVer$Extras$Patched os$MinOS)$CrackedBy.rc31a5_AppAddict.ipa"
 
+
+if [ "$RCremote" = "YES" ]; then
+	echo "$(basename "$IPAName")" > /tmp/REMOTEname.txt
+	IPAName="/tmp/REMOTEout.zip"
+fi
 # If debug-check-only, don't create real Ipa but an empty proof file
 if [ $RCcheck = "YES" ]; then
 	#DEBUG# ls -l "$WorkDir/$AppName/$AppExec"
@@ -788,6 +798,8 @@ if [ ! -e "$IPAName.temp" ]; then
 	return 1
 fi
 
+# RemoteRasticrac only does one zip step
+if [ "$RCremote" != "YES" ]; then
 # Remember size of .ipa after step 1
 ZipSize=$(stat -c%s "$IPAName.temp")
 
@@ -803,6 +815,7 @@ ln -s "$AppPath/" "$WorkDir/Payload"
 # Size of other data to compress
 SecondSize=$(du -m -s "$AppPath" | cut -f 1)
 echo "${Meter80}$MsgZipStep 2) [$(( $SecondSize - $FirstSize )) M$MsgSizUnit]"
+
 
 cd "$WorkDir"
 # Zip doesn't move/delete source, and excludes some unwanted files. Smart "-n" flag excludes already compact files.
@@ -820,14 +833,14 @@ if [ $(stat -c%s "$IPAName.temp") -eq $ZipSize ]; then
 	rm -f "$IPAName.temp"
 	rm -fr "$WorkDir"
 	return 1
+	fi
+	# Removing SymbolicLink
+	rm "$WorkDir/Payload"
+	cd "$PwdPwd" 2>&1> /dev/null
 fi
 
 # Ipa final name
 mv "$IPAName.temp" "$IPAName"
-
-# Removing SymbolicLink
-rm "$WorkDir/Payload"
-cd "$PwdPwd" 2>&1> /dev/null
 
 # Removing temporary directory
 if [ $RCverbose = "YES" ]; then
@@ -938,6 +951,11 @@ fi
 
 if [ ! -e /var/root/dumpdecrypted.dylib ]; then
 	echo "$MsgCntFind 'dumpdecrypted.dylib'."
+	exit 1
+fi
+
+if [ ! -e /usr/bin/noaslr ]; then
+	echo "$MsgCntFind 'noaslr'. $MsgInsCydi: 'noaslr'"
 	exit 1
 fi
 
@@ -1138,7 +1156,7 @@ if [ $# -lt 1 ]; then
 		# The "-a" flag is not displayed in the help, but it does exist.
 		scr=$(basename $0)
 		echo "List/Help: $scr"
-		echo "	   Menu: $scr [-v] -m [CN [CFN]]"
+		echo "     Menu: $scr [-v] -m [CN [CFN]]"
 		echo " CrackAll: $scr [-v] -all [CN [CFN]]"
 		echo " CrackOne: $scr [-v] AN [CN [CFN]]"
 		echo " MarkDone: $scr -mark"
@@ -1541,4 +1559,4 @@ rm -f /tmp/lsd.tmp
 # Hontoni arigato.
 #
 
-# Thanks for using v3.1a5
+# Thanks for testing v3.1a5
